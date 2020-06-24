@@ -1,11 +1,22 @@
+
 const Product = (sequelize, S) => {
   // defino el modelo
-  const P = sequelize.define('product', {
+  // console.log()
+   P = sequelize.define('product', {
     id: {
       type: S.INTEGER,
       allowNull: false,
       autoIncrement: true,
+      primaryKey: true
     },
+    marca: {
+      type: S.STRING,
+      allowNull: false,
+    },
+    nombre: {
+      type: S.STRING,
+    },
+    
   });
   
   return P;
