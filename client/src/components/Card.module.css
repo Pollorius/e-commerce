@@ -1,0 +1,9 @@
+.ancho{    
+    max-width: 540px;
+    display: flex;
+    margin-left: 20px;
+}
+.container{
+    display: flex;
+    justify-content: center;
+}

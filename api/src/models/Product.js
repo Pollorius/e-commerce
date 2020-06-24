@@ -18,7 +18,7 @@ const Product = (sequelize, S) => {
     },
     
   });
-  
+
   return P;
 };
 
