@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "NODE_PATH=./src nodemon -L",
-    "forever": "NODE_PATH=./src forever index.js",
-    "test": "NODE_PATH=./src mocha -w ./tests/**/*.spec.js"
+    "start": "nodemon -L ./index.js",
+    "forever": "./src forever index.js",
+    "test": "./src mocha -w ./tests/**/*.spec.js"
   },
   "author": "Dev5",
   "license": "ISC",
@@ -23,10 +23,11 @@
     "jsonwebtoken": "^8.5.1"
   },
   "devDependencies": {
-    "supertest-session": "^4.0.0",
-    "mocha": "^8.0.1",
     "chai": "^4.2.0",
+    "cross-env": "^7.0.2",
+    "mocha": "^8.0.1",
     "nodemon": "^2.0.4",
-    "supertest": "^4.0.2"
+    "supertest": "^4.0.2",
+    "supertest-session": "^4.0.0"
   }
 }

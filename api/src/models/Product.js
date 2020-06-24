@@ -5,9 +5,10 @@ const Product = (sequelize, S) => {
       type: S.INTEGER,
       allowNull: false,
       autoIncrement: true,
+      primaryKey: true
     },
   });
-  
+
   return P;
 };
 
