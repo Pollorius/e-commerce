@@ -17,6 +17,7 @@ fs.readdirSync(__dirname)
 
 const {
   Product,
+  Category,
 } = models;
 
 // Add model relationships here
