@@ -14,9 +14,12 @@ export default function Card(props) {
                         </div>
                         <div className="col-md-8">
                             <div className="card-body">
-                                <h5 className="card-title"> {props.nombre} </h5>
-                                <p className="card-text">Descripción producto</p>
-                                <p className="card-text"><small className="text-muted">Ver más..</small></p>
+                                <h5 className="card-title"> {props.name} </h5>
+                                <p className="card-text"> {props.brand}</p>
+                                <p className="card-text"> {props.package} </p>
+                                <p className="card-text"> {props.description} </p>
+                                <p className="card-text"> {props.prize} </p>
+                                <p className="card-text"><small className="text-muted"> <a href="#">Ver más...</a></small></p>
                             </div>
                         </div>
                     </div>

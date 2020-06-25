@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Card from './components/Card.jsx';
@@ -7,11 +7,13 @@ import SearchBar from './components/SearchBar.jsx';
 import Nav from './components/Nav.jsx'
 
 function App() {
+  const [cervezas, setCervezas] = useState([]);
   return (
     <div>
       <div>
         <Nav />
-        <Card nombre="Honey Beer" />
+        <Cards cervezas={cervezas} description="Cerveza rubia" />
+
 
       </div>
 
