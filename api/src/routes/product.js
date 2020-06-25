@@ -16,32 +16,49 @@ server.get('/', function(req, res, next) {
                 console.log("aca estoy")
                 return res.status(404).send("PRODUCT NOT FOUND");
             }
-            res.json(products)
-        })
+            res.json(products);
+        });
         return;
     } 
 
     Product.findAll()
     .then(function(products) {
         if(!products) return res.sendStatus(404);
-        res.json(products)
-    })
-    .catch(next);
+        res.json(products);
+    }).catch(next);
     
 });
 
+server.get('/:id', function(req, res, next){
+    Product.findByPk(req.params.id)
+    .then(function(product){
+        res.json(product);
+    }).catch(next);
+});
+
 server.post('/', function(req, res, next) {
-    console.log(req.body)
+    if(!req.body.marca) return res.status(404).send("NOT ENOUGH REQUIREMENTS TO CREATE THIS PRODUCT");
     Product.create({
         marca: req.body.marca,
         nombre: req.body.nombre,
     })
     .then(function(createdProduct){
         res.json(createdProduct)
-    })
-    .catch(next);
+    }).catch(next);
 
 })
+
+server.put('/:id', function(req, res, next){
+    if(!req.body.marca) return res.status(404).send("NOT ENOUGH REQUIREMENTS TO MODIFY THIS PRODUCT")
+    Product.update({...req.body}, {
+        where: {
+            id: req.params.id
+        }
+    }).then(function(updatedProduct){
+        res.status(201).send("PRODUCT SUCCESSFULLY UPDATED")
+    }).catch(next);
+
+});
 
 
 module.exports = server;
