@@ -5,43 +5,64 @@ var Sequelize = require('sequelize');
 const Op = Sequelize.Op;
 
 server.get('/', function(req, res, next) {
-    if(req.query.search) {        
+    if(req.query.search) {
+        const capQuery = req.query.search.charAt(0).toUpperCase() + req.query.search.slice(1)       
         Product.findAll({
             where: {
-                [Op.or]: [{marca: req.query.search}, {nombre: req.query.search}]
+                [Op.or]: [{brand: capitalizedQuery}, {name: capitalizedQuery}]
             }
         }).then(function(products){
             var product = products[0]
             if(product === undefined) {
-                console.log("aca estoy")
                 return res.status(404).send("PRODUCT NOT FOUND");
             }
-            res.json(products)
-        })
+            res.json(products);
+        });
         return;
     } 
 
     Product.findAll()
     .then(function(products) {
         if(!products) return res.sendStatus(404);
-        res.json(products)
-    })
-    .catch(next);
+        res.json(products);
+    }).catch(next);
     
 });
 
+server.get('/:id', function(req, res, next){
+    Product.findByPk(req.params.id)
+    .then(function(product){
+        res.json(product);
+    }).catch(next);
+});
+
 server.post('/', function(req, res, next) {
-    console.log(req.body)
+    const { brand, name, package } = req.body
+    if(!brand && !name && !package) return res.status(404).send("NOT ENOUGH REQUIREMENTS TO CREATE THIS PRODUCT");
+    
     Product.create({
-        marca: req.body.marca,
-        nombre: req.body.nombre,
+        brand: brand,
+        name: name,
+        package: package,
     })
     .then(function(createdProduct){
         res.json(createdProduct)
-    })
-    .catch(next);
+    }).catch(next);
 
-})
+});
+
+server.put('/:id', function(req, res, next){
+    const { brand, name, package } = req.body
+    if(!brand && !name && !package) return res.status(404).send("NOT ENOUGH REQUIREMENTS TO MODIFY THIS PRODUCT")
+    Product.update({...req.body}, {
+        where: {
+            id: req.params.id
+        }
+    }).then(function(updatedProduct){
+        res.status(201).send("PRODUCT SUCCESSFULLY UPDATED")
+    }).catch(next);
+
+});
 
 
 module.exports = server;
