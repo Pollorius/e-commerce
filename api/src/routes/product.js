@@ -13,7 +13,7 @@ server.get('/', function(req, res, next) {
         }).then(function(products){
             var product = products[0]
             if(product === undefined) {
-                console.log("aca estoy")
+                // console.log("aca estoy")
                 return res.status(404).send("PRODUCT NOT FOUND");
             }
             res.json(products)
