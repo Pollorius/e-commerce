@@ -21,6 +21,7 @@ const {
 } = models;
 
 // Add model relationships here
-
+Product.belongsToMany(Category, { through: 'ProductCategories'})
+Category.belongsToMany(Product, { through: 'ProductCategories'})
 
 module.exports = models;

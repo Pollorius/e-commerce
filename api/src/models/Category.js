@@ -7,23 +7,19 @@ const Category = (sequelize, S) => {
             allowNull: false,
             autoIncrement: true,
             primaryKey: true
-        },
-        presentacion: {
+        },        
+        type: {
             type: S.STRING,
             allowNull: false,
         },
-        tipo: {
-            type: S.STRING,
-            allowNull: false,
-        },
-        fabricacion: {
+        prod_method: {
             type: S.STRING,      
         },
-        procedencia: {
+        origin: {
             type: S.STRING,
         }
     });
-
+    
     return C;
 }
 
