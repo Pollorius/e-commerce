@@ -9,17 +9,9 @@ server.get('/', function(req, res, next) {
         const capQuery = req.query.search.charAt(0).toUpperCase() + req.query.search.slice(1)       
         Product.findAll({
             where: {
-                [Op.or]: [{brand: capitalizedQuery}, {name: capitalizedQuery}]
+                [Op.or]: [{brand: capQuery}, {name: capQuery}]
             }
         }).then(function(products){
-            var product = products[0]
-            if(product === undefined) {
-<<<<<<< HEAD
-                // console.log("aca estoy")
-=======
->>>>>>> a0d09ef180d7faa9fc46d75c13281c6f2b9e1abb
-                return res.status(404).send("PRODUCT NOT FOUND");
-            }
             res.json(products);
         });
         return;

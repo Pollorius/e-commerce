@@ -1,9 +1,11 @@
 import React from 'react';
 import style from './Card.module.css';
-import Imagen from './logo512.png'
+import Imagen from './logo512.png';
+import {Link} from 'react-router-dom';
 
 
-export default function Card(props) {
+
+export default function Card({name, brand,  description, price, id}) {
     return (
         <div className={style.container}>
             <div className={style.ancho}>
@@ -14,12 +16,14 @@ export default function Card(props) {
                         </div>
                         <div className="col-md-8">
                             <div className="card-body">
-                                <h5 className="card-title"> {props.name} </h5>
-                                <p className="card-text"> {props.brand}</p>
-                                <p className="card-text"> {props.package} </p>
-                                <p className="card-text"> {props.description} </p>
-                                <p className="card-text"> {props.prize} </p>
-                                <p className="card-text"><small className="text-muted"> <a href="#">Ver más...</a></small></p>
+                                <h5 className="card-title"> {name}</h5>
+                                <p className="card-text"> {brand}</p>
+                                <p className="card-text">  </p>
+                                <p className="card-text"> {description} </p>
+                                <p className="card-text"> {price} </p>
+                                <Link to={`/products/${id}`} >
+                                <p className="card-text"><small className="text-muted">Ver más...</small></p>
+                                </Link>
                             </div>
                         </div>
                     </div>
