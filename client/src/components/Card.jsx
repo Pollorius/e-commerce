@@ -1,6 +1,6 @@
 import React from 'react';
 import style from './Card.module.css';
-import Imagen from './logo512.png';
+import Imagen from './beerProduct.jpg';
 import {Link} from 'react-router-dom';
 
 

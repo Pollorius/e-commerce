@@ -7,6 +7,7 @@ export default function Cards({ products }) {
         <div className='cards'>
             {products.map(p => <Card
                 key={p.id}
+                id={p.id}
                 name={p.name}
                 brand={p.brand}
                 package={p.package}
