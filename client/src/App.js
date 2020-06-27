@@ -1,7 +1,6 @@
-import React, {useState, Component} from 'react';
+import React, { Component } from 'react';
 //import logo from './logo.svg';
 import './App.css';
-import Card from './components/Card.jsx';
 import Cards from './components/Cards.jsx';
 //import SearchBar from './components/SearchBar.jsx';
 import Nav from './components/Nav.jsx'
@@ -49,12 +48,11 @@ class App extends Component {
     })
     .catch(err => err) 
   }
-  
+
   onFilter(id) {
-    console.log(id)
     let product = this.state.products.filter(c => c.id === parseInt(id));
-    if(product.length > 0) {
-        return product[0];
+    if(product.length > 0) { 
+      return product[0];
     } else {
         return null;
     }
@@ -88,7 +86,7 @@ class App extends Component {
               <Route 
                 exact path='/products/:id'
                 render ={({match}) => <ProductItem 
-                products={this.onFilter(match.params.id)} />}
+                product={this.onFilter(match.params.id)} />}
               />
             </div>
             <hr />   

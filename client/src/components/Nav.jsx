@@ -9,9 +9,9 @@ function Nav({ onSearch }) {
         
         <nav className="navbar navbar-dark bg-dark">
             <Link to='/'>
-            <a className="navbar-brand" href="#">
+            <div className="navbar-brand" href="#">
                 <img src={Logo} width="30" height="30" alt="" loading="lazy" /> Beer E-commerce
-            </a>
+            </div>
             </Link>
             <SearchBar onSearch={onSearch} />
         </nav>
