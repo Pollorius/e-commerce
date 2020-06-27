@@ -9,14 +9,10 @@ server.get('/', function(req, res, next) {
         const capQuery = req.query.search.charAt(0).toUpperCase() + req.query.search.slice(1)       
         Product.findAll({
             where: {
-                [Op.or]: [{brand: capitalizedQuery}, {name: capitalizedQuery}]
+                [Op.or]: [{brand: capQuery}, {name: capQuery}]
             }
         }).then(function(products){
-            var product = products[0]
-            if(product === undefined) {
-                return res.status(404).send("PRODUCT NOT FOUND");
-            }
-            res.json(products);
+                res.json(products);
         });
         return;
     } 
@@ -37,13 +33,15 @@ server.get('/:id', function(req, res, next){
 });
 
 server.post('/', function(req, res, next) {
-    const { brand, name, package } = req.body
-    if(!brand && !name && !package) return res.status(404).send("NOT ENOUGH REQUIREMENTS TO CREATE THIS PRODUCT");
+    const { brand, name, package, price, description } = req.body
+    if(!brand && !name && !package && !price) return res.status(404).send("NOT ENOUGH REQUIREMENTS TO CREATE THIS PRODUCT");
     
     Product.create({
         brand: brand,
         name: name,
         package: package,
+        price: price,
+        description: description
     })
     .then(function(createdProduct){
         res.json(createdProduct)

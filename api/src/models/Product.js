@@ -20,6 +20,11 @@ const Product = (sequelize, S) => {
       type: S.STRING,
       allowNull: false,
     },
+    price: {
+      type: S.INTEGER,
+      allowNull: false,
+    },
+
     description: {
       type: S.STRING,
     },
