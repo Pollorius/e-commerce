@@ -12,7 +12,7 @@ server.get('/', function(req, res, next) {
                 [Op.or]: [{brand: capQuery}, {name: capQuery}]
             }
         }).then(function(products){
-                res.json(products);
+            res.json(products);
         });
         return;
     } 
@@ -33,6 +33,7 @@ server.get('/:id', function(req, res, next){
 });
 
 server.post('/', function(req, res, next) {
+
     const { brand, name, package, price, description } = req.body
     if(!brand && !name && !package && !price) return res.status(404).send("NOT ENOUGH REQUIREMENTS TO CREATE THIS PRODUCT");
     
