@@ -64,10 +64,10 @@ export default function Form(){
                     <input type="text" className="form-control" id="inputDescription" placeholder="Cerveza rubia de malta..." />
                 </div>
                 <div className="form-row">
-                    <div className="form-group col-md-6">
+                    {/* <div className="form-group col-md-6">
                         <label for="inputPresentacion">Presentación</label>
                         <input type="text" className="form-control" id="inputPresentacion"/>
-                    </div>
+                    </div> */}
                     <div className="form-group col-md-4">
                         <label for="inputPackage">Package</label>
                         <select id="inputPackage" className="form-control">

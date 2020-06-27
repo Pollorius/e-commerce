@@ -1,5 +1,5 @@
 import React from 'react';
-import Logo from './logo192.png'
+import Logo from './beerIcon.png'
 import SearchBar from './SearchBar.jsx';
 import './Nav.css';
 import { Link } from 'react-router-dom';

@@ -50,7 +50,7 @@ class App extends Component {
   }
 
   onFilter(id) {
-    let product = this.state.products.filter(c => c.id === parseInt(id));
+    let product = this.state.products.filter(p => p.id === parseInt(id));
     if(product.length > 0) { 
       return product[0];
     } else {
