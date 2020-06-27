@@ -1,7 +1,7 @@
-import React, {useState, Component} from 'react';
+import React, {Component} from 'react';
 //import logo from './logo.svg';
 import './App.css';
-import Card from './components/Card.jsx';
+//import Card from './components/Card.jsx';
 import Cards from './components/Cards.jsx';
 //import SearchBar from './components/SearchBar.jsx';
 import Nav from './components/Nav.jsx'
@@ -31,7 +31,7 @@ class App extends Component {
     this.setState({products: event.target.products});
   }
   onClose(id) {
-    this.setState(products => products.filter(c => c.id !== id));
+     this.setState(products => products.filter(c => c.id !== id));
   }
 
   onSearch (products){
@@ -49,9 +49,9 @@ class App extends Component {
     })
     .catch(err => err) 
   }
+
   
   onFilter(id) {
-    console.log(id)
     let product = this.state.products.filter(c => c.id === parseInt(id));
     if(product.length > 0) {
         return product[0];
@@ -82,7 +82,7 @@ class App extends Component {
                render ={() => <Cards products={products} />}
               />
             <Route
-               exact path='/products/edit'
+               exact path='/products/:id/edit'
                render ={()=> <Form onChange={this.handleChange}/> }
               />
               <Route 
