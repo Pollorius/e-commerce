@@ -33,13 +33,16 @@ server.get('/:id', function(req, res, next){
 });
 
 server.post('/', function(req, res, next) {
-    const { brand, name, package } = req.body
-    if(!brand && !name && !package) return res.status(404).send("NOT ENOUGH REQUIREMENTS TO CREATE THIS PRODUCT");
+
+    const { brand, name, package, price, description } = req.body
+    if(!brand && !name && !package && !price) return res.status(404).send("NOT ENOUGH REQUIREMENTS TO CREATE THIS PRODUCT");
     
     Product.create({
         brand: brand,
         name: name,
         package: package,
+        price: price,
+        description: description
     })
     .then(function(createdProduct){
         res.json(createdProduct)

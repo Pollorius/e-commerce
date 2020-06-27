@@ -1,17 +1,17 @@
 import React from 'react';
-
 import Card from './Card.jsx';
 
 export default function Cards({ products }) {
+   
     return (
         <div className='cards'>
-            {products.map(c => <Card
-                key={c.id}
-                name={c.name}
-                brand={c.brand}
-                package={c.package}
-                description={c.description}
-                price={c.price}
+            {products.map(p => <Card
+                key={p.id}
+                name={p.name}
+                brand={p.brand}
+                package={p.package}
+                description={p.description}
+                price={p.price}
             />)}
         </div>
     );

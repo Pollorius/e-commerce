@@ -22,6 +22,7 @@ const server = require('./src/app.js');
 const { conn } = require('./src/models/index.js');
 
 // Syncing all the models at once.
+
 conn.sync().then(() => {
   server.listen(9000, () => {
     console.log('is listening at 9000'); // eslint-disable-line no-console

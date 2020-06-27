@@ -24,6 +24,7 @@ export default function Card({name, brand,  description, price, id}) {
                                 <Link to={`/products/${id}`} >
                                 <p className="card-text"><small className="text-muted">Ver más...</small></p>
                                 </Link>
+
                             </div>
                         </div>
                     </div>

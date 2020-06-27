@@ -49,9 +49,7 @@ class App extends Component {
     })
     .catch(err => err) 
   }
-
   
-
   onFilter(id) {
     console.log(id)
     let product = this.state.products.filter(c => c.id === parseInt(id));
@@ -93,14 +91,14 @@ class App extends Component {
                 products={this.onFilter(match.params.id)} />}
               />
             </div>
-            <hr />
-            
+            <hr />   
          
             </BrowserRouter> 
          </div>
          
        
      );
+
   }
 }
 
