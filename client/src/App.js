@@ -80,7 +80,7 @@ class App extends Component {
                render ={() => <Cards products={products} />}
               />
             <Route
-               exact path='/products/edit'
+               exact path='/products/:id/edit'
                render ={()=> <Form onChange={this.handleChange}/> }
               />
               <Route 

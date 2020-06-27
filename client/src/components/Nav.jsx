@@ -10,7 +10,7 @@ function Nav({ onSearch }) {
         <nav className="navbar navbar-dark bg-dark">
             <Link to='/'>
             <div className="navbar-brand" href="#">
-                <img src={Logo} width="30" height="30" alt="" loading="lazy" /> Beer E-commerce
+                <img src={Logo} width="30" height="30" alt="" loading="lazy" /> Beer O'clock!
             </div>
             </Link>
             <SearchBar onSearch={onSearch} />
