@@ -8,7 +8,9 @@ import Nav from './components/Nav.jsx'
 import Form from './components/Forms.jsx';
 import  { BrowserRouter, Route } from 'react-router-dom';
 import Home from './components/Home.jsx';
-import ProductItem from './components/Product.jsx'
+import ProductItem from './components/Product.jsx';
+import FormAdd from './components/FormAdd.jsx';
+
 
 class App extends Component {
   constructor(props) {
@@ -80,11 +82,18 @@ class App extends Component {
             <Route 
                exact path='/products'
                render ={() => <Cards products={products} />}
+               
               />
-            <Route
+              
+              <Route
+               exact path='/products/:id/new'
+               render ={()=> <FormAdd onChange={this.handleChange}  products={products} /> }
+              />
+              <Route
                exact path='/products/:id/edit'
-               render ={()=> <Form onChange={this.handleChange}/> }
+               render ={()=> <Form onChange={this.handleChange} products={products}/> }
               />
+              
               <Route 
                 exact path='/products/:id'
                 render ={({match}) => <ProductItem 

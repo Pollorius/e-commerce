@@ -2,14 +2,14 @@ import React from 'react';
 import style from './Forms.module.css';
 //import { useForm } from 'react-hook-form';
 
-export default function Form({products}) {
-    
+export default function Form() {
+
     // const { register } = useForm();
     // const onSubmit = data => console.log(data);
-
+    
   const handleSubmit = function(e) {
     e.preventDefault();
-    var url = `http://localhost:9000/products/${products[0].id}`;
+    var url = 'http://localhost:9000/products';
     var data = {brand: e.target.brand.value,
       name: e.target.name.value,
       package: e.target.package.value,
@@ -17,14 +17,14 @@ export default function Form({products}) {
       price: e.target.price.value,
       id: e.target.id.value
     };
+    console.log(data)
     fetch(url, {
-      method: 'PUT', //POST
+      method: 'POST', //POST
       body: JSON.stringify(data),
       headers:{
         'Content-Type': 'application/json'
       }
-    }).then(res => res.json())
-        .catch(err => err) 
+    }).then(res => console.log(res));
   }
 
     return (

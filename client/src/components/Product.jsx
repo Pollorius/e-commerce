@@ -3,6 +3,7 @@ import Image from './beerProduct.jpg';
 import style from './Product.module.css';
 import {Link} from 'react-router-dom';
 
+
 export default function ProductItem(props) {
     return (
         <div>
@@ -23,6 +24,7 @@ export default function ProductItem(props) {
                     </Link>
                 </div>
             </div>
+           
         </div>
     )
 }
