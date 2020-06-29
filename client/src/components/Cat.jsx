@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 //import style from './Cards.module.css'
 
 export default function Categories({id, name}) {
-   
+    
     return (
         <div>
          <div >

@@ -4,7 +4,7 @@ import style from './Forms.module.css';
 import Cat from './Cat.jsx'
 
 export default function Form(props) {
-    console.log(props.categories)
+    
     // const { register } = useForm();
     // const onSubmit = data => console.log(data);
     
@@ -17,9 +17,9 @@ export default function Form(props) {
       description: e.target.description.value,
       price: e.target.price.value,
       id: e.target.id.value,
-      
+      categories: e.target.categories.value
     };
-    
+    console.log(data)
     fetch(url, {
       method: 'POST', //POST
       body: JSON.stringify(data),
@@ -74,12 +74,11 @@ export default function Form(props) {
                 <div class="form-group">
                     <label for="exampleFormControlSelect2">Example multiple select</label>
                     <select name='category' multiple className="form-control" id="exampleFormControlSelect2">
-                    <option>
-                    {props.categories.map(c => <Cat
-                        name={c.name}
-                        
-                    />)}
-                    </option>
+                        <option>
+                            {props.categories.map( c=> <Cat 
+                            name={c.name}
+                            />)}
+                        </option>
                         
                     </select>
                 </div>

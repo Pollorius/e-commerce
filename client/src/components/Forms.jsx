@@ -1,28 +1,30 @@
 import React from 'react';
 import style from './Forms.module.css';
-import { useForm } from 'react-hook-form';
+//import { useForm } from 'react-hook-form';
 
-export default function Form(props) {
-
-    const { register } = useForm();
-    const onSubmit = data => console.log(data);
+export default function Form({products}) {
+    
+    // const { register } = useForm();
+    // const onSubmit = data => console.log(data);
 
   const handleSubmit = function(e) {
     e.preventDefault();
-    var url = 'http://localhost:9000/products';
+    var url = `http://localhost:9000/products/${products[0].id}`;
     var data = {brand: e.target.brand.value,
       name: e.target.name.value,
       package: e.target.package.value,
       description: e.target.description.value,
-      price: e.target.price.value
+      price: e.target.price.value,
+      id: e.target.id.value
     };
     fetch(url, {
-      method: 'POST', //POST
+      method: 'PUT', //POST
       body: JSON.stringify(data),
       headers:{
         'Content-Type': 'application/json'
       }
-    }).then(res => console.log(res));
+    }).then(res => res.json())
+        .catch(err => err) 
   }
 
     return (
@@ -45,8 +47,13 @@ export default function Form(props) {
                 <div className="form-row">
                      <div className="form-group col-md-6">
                         <label for="inputPresentacion">Presentación</label>
+
                         <input name='presentación' type="text" className="form-control" id="inputPresentacion"  required />
                     </div>
+
+                        <input type="text" className="form-control" id="inputPresentacion"/>
+                    </div>
+
                     <div className="form-group col-md-4">
                         <label for="inputPackage">Package</label>
                         <select name='package' id="inputPackage" className="form-control"  required>
@@ -62,7 +69,7 @@ export default function Form(props) {
                         <label for="inputPrice">Price</label>
                         <input name='price' type="text" className="form-control" id="inputPrice"  required />
                     </div>
-                </div>
+                
                 <div className="form-group">
                     <label for="exampleFormControlFile1">Upload your product image</label>
                     <input type="file" className="form-control-file" id="exampleFormControlFile1" />
