@@ -20,10 +20,6 @@ const Product = (sequelize, S) => {
       type: S.STRING,
       allowNull: false,
     },
-    package: {
-      type: S.STRING,
-      allowNull: false,
-    },
     price: {
       type: S.INTEGER,
       allowNull: false,
@@ -31,6 +27,9 @@ const Product = (sequelize, S) => {
     description: {
       type: S.STRING,
     },
+    imageUrl: {
+      type: S.STRING,
+    }
   });
   
   P.beforeCreate(async (product, options) => {
