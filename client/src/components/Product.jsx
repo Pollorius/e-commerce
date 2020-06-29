@@ -5,6 +5,7 @@ import {Link} from 'react-router-dom';
 
 export default function ProductItem(props) {
     return (
+<<<<<<< HEAD
 
         <div className={style.productContainer}>
             <div>
@@ -14,6 +15,9 @@ export default function ProductItem(props) {
                     <p className="card-text"> {props.products.brand} </p>
                     <p className="card-text"><small className="text-muted"> {props.products.description}</small></p>
                 </div>
+=======
+        <div>
+>>>>>>> fe7f195793b502a4a808c47f9c5eb898f46bf16e
             <div className={style.productContainer}>
                 <div>
                     <img src={Image} alt="..." />
@@ -37,7 +41,10 @@ export default function ProductItem(props) {
                 </Link>
             </div>
         </div>
+<<<<<<< HEAD
         </div>
+=======
+>>>>>>> fe7f195793b502a4a808c47f9c5eb898f46bf16e
     </div>
     )
 }

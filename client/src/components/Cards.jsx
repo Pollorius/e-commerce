@@ -1,8 +1,8 @@
 import React from 'react';
 import Card from './Card.jsx';
 
-export default function Cards({products, categories}) {
-    
+export default function Cards({ products }) {
+   
     return (
         <div className='cards'>
             {products.map(p => <Card
@@ -13,9 +13,11 @@ export default function Cards({products, categories}) {
                 package={p.package}
                 description={p.description}
                 price={p.price}
-                categories={p.categories}
             />)}
         </div>
+<<<<<<< HEAD
         
+=======
+>>>>>>> fe7f195793b502a4a808c47f9c5eb898f46bf16e
     );
 }
