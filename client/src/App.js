@@ -88,7 +88,7 @@ class App extends Component {
               <Route 
                 exact path='/products/:id'
                 render ={({match}) => <ProductItem 
-                products={this.onFilter(match.params.id)} />}
+                product={this.onFilter(match.params.id)} />}
               />
             </div>
             <hr />   

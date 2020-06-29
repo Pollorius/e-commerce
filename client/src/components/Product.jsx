@@ -23,6 +23,16 @@ export default function ProductItem(props) {
                     </Link>
                 </div>
             </div>
+            <div className={style.container}>
+            <div className={style.btn}>
+                <Link to={`/products/${props.product.id}/edit`} >
+                    <button type="button" 
+                    className="btn btn-secondary btn-sm">
+                        Edit
+                    </button>
+                </Link>
+            </div>
         </div>
+    </div>
     )
 }
