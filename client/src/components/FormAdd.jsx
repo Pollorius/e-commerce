@@ -2,29 +2,30 @@ import React from 'react';
 import style from './Forms.module.css';
 //import { useForm } from 'react-hook-form';
 
-export default function Form({products}) {
-    
+export default function Form({categories}) {
+    console.log({categories})
     // const { register } = useForm();
     // const onSubmit = data => console.log(data);
-
+    
   const handleSubmit = function(e) {
     e.preventDefault();
-    var url = `http://localhost:9000/products/${products[0].id}`;
+    var url = 'http://localhost:9000/products';
     var data = {brand: e.target.brand.value,
       name: e.target.name.value,
       package: e.target.package.value,
       description: e.target.description.value,
       price: e.target.price.value,
-      id: e.target.id.value
+      id: e.target.id.value,
+      categories: e.target.categories.value
     };
+    console.log(data)
     fetch(url, {
-      method: 'PUT', //POST
+      method: 'POST', //POST
       body: JSON.stringify(data),
       headers:{
         'Content-Type': 'application/json'
       }
-    }).then(res => res.json())
-        .catch(err => err) 
+    }).then(res => console.log(res));
   }
 
     return (
@@ -45,15 +46,10 @@ export default function Form({products}) {
                     <input name='description' type="text" className="form-control" id="inputDescription" placeholder="Cerveza rubia de malta..."  required />
                 </div>
                 <div className="form-row">
-                    {/* <div className="form-group col-md-6">
+                    <div className="form-group col-md-6">
                         <label for="inputPresentacion">Presentación</label>
-<<<<<<< HEAD
                         <input name='presentación' type="text" className="form-control" id="inputPresentacion"  required />
                     </div>
-=======
-                        <input type="text" className="form-control" id="inputPresentacion"/>
-                    </div> */}
->>>>>>> d4e2687467d99a58b9704301dc83acf7d153aa95
                     <div className="form-group col-md-4">
                         <label for="inputPackage">Package</label>
                         <select name='package' id="inputPackage" className="form-control"  required>
@@ -73,6 +69,14 @@ export default function Form({products}) {
                 <div className="form-group">
                     <label for="exampleFormControlFile1">Upload your product image</label>
                     <input type="file" className="form-control-file" id="exampleFormControlFile1" />
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlSelect2">Example multiple select</label>
+                    <select name='category' multiple className="form-control" id="exampleFormControlSelect2">
+                        <option>{categories.name}</option>
+                        <option>Negra</option>
+                        <option>Roja</option>
+                    </select>
                 </div>
                 <input type="submit" />
             </form>
