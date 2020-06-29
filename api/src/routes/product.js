@@ -40,18 +40,16 @@ server.get('/findByCat', function(req, res){
     const { categoryId } = req.body
     Category.findByPk(categoryId)
     .then(function(category) {
-      category.getProducts({
-        include:{
-            model: Category,
-            attributes: ["name"],
-        }
-      }).then(function(product){
+      category.getProducts()
+      .then(function(product){
         res.json(product);
       });
     }).catch(function(reason){
         res.status(404).json({message:"THERE IS NOT PRODUCTS IN THIS CATEGORY", data: reason})
     })
 })
+
+
 
 server.get('/:id', function(req, res, next){
     Product.findByPk(req.params.id, {
