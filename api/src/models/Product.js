@@ -30,9 +30,7 @@ const Product = (sequelize, S) => {
     imageUrl: {
       type: S.STRING,
     },
-    categories: {
-      
-    }
+    
   });
   
   P.beforeCreate(async (product, options) => {

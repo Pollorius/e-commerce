@@ -1,31 +1,5 @@
 import React from 'react';
 import style from './Forms.module.css';
-<<<<<<< HEAD
-import { useForm } from 'react-hook-form';
-
-export default function Form(props) {
-
-    const { register } = useForm();
-    const onSubmit = data => console.log(data);
-
-  const handleSubmit = function(e) {
-    e.preventDefault();
-    var url = 'http://localhost:9000/products';
-    var data = {brand: e.target.brand.value,
-      name: e.target.name.value,
-      package: e.target.package.value,
-      description: e.target.description.value,
-      price: e.target.price.value
-    };
-    fetch(url, {
-      method: 'POST', //POST
-      body: JSON.stringify(data),
-      headers:{
-        'Content-Type': 'application/json'
-      }
-    }).then(res => console.log(res));
-  }
-=======
 
 export function validate(input) {
     let errors = {};
@@ -65,7 +39,6 @@ export default function Form(){
         });
     }
 
->>>>>>> fe7f195793b502a4a808c47f9c5eb898f46bf16e
 
     return (
         <div className={style.container}>
@@ -93,18 +66,8 @@ export default function Form(){
                 <div className="form-row">
                      <div className="form-group col-md-6">
                         <label for="inputPresentacion">Presentación</label>
-<<<<<<< HEAD
-
-                        <input name='presentación' type="text" className="form-control" id="inputPresentacion"  required />
-                    </div>
-
                         <input type="text" className="form-control" id="inputPresentacion"/>
-                    </div>
-
-=======
-                        <input type="text" className="form-control" id="inputPresentacion"/>
-                    </div> */}
->>>>>>> fe7f195793b502a4a808c47f9c5eb898f46bf16e
+                    </div> 
                     <div className="form-group col-md-4">
                         <label for="inputPackage">Package</label>
                         <select id="inputPackage" className="form-control">
@@ -126,21 +89,12 @@ export default function Form(){
                             <p className={style.text}>{errors.price}</p>
                         )}
                     </div>
-<<<<<<< HEAD
-                
-                <div className="form-group">
-                    <label for="exampleFormControlFile1">Upload your product image</label>
-                    <input type="file" className="form-control-file" id="exampleFormControlFile1" />
-                </div>
-                <input type="submit" />
-=======
                 </div>
                     <div className="form-group">
                         <label for="exampleFormControlFile1">Upload your product image</label>
                         <input type="file" className="form-control-file" id="exampleFormControlFile1"/>
                     </div>
                 <button type="submit" className="btn btn-primary">Submit Product</button>
->>>>>>> fe7f195793b502a4a808c47f9c5eb898f46bf16e
             </form>
         </div>
     )
