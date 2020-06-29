@@ -9,10 +9,14 @@ import Nav from './components/Nav.jsx'
 import Form from './components/Forms.jsx';
 import  { BrowserRouter, Route } from 'react-router-dom';
 import Home from './components/Home.jsx';
+<<<<<<< HEAD
 import ProductItem from './components/Product.jsx';
 import FormAdd from './components/FormAdd.jsx';
 import Categories from './components/categories.jsx'
 import FormCat from './components/FormCat.jsx';
+=======
+import ProductItem from './components/Product.jsx'
+>>>>>>> parent of c682e33... frontend4
 
 class App extends Component {
   constructor(props) {
@@ -107,17 +111,24 @@ class App extends Component {
                />  
             <Route 
                exact path='/products'
+<<<<<<< HEAD
                render ={() => <Categories categories={categories}/>}
                
+=======
+               render ={() => <Cards products={products} />}
+>>>>>>> parent of c682e33... frontend4
               />
             <Route
                exact path='/products/:id/edit'
                render ={()=> <Form onChange={this.handleChange}/> }
               />
+<<<<<<< HEAD
               <Route
                exact path='/products/:id/addcat'
                render ={()=> <FormCat onChange={this.handleChange} categories={categories}/> }
                />
+=======
+>>>>>>> parent of c682e33... frontend4
               <Route 
                 exact path='/products/:id'
                 render ={({match}) => <ProductItem 

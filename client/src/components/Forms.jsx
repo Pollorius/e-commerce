@@ -1,30 +1,28 @@
 import React from 'react';
 import style from './Forms.module.css';
-//import { useForm } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 
-export default function Form({products}) {
-    
-    // const { register } = useForm();
-    // const onSubmit = data => console.log(data);
+export default function Form(props) {
+
+    const { register } = useForm();
+    const onSubmit = data => console.log(data);
 
   const handleSubmit = function(e) {
     e.preventDefault();
-    var url = `http://localhost:9000/products/${products[0].id}`;
+    var url = 'http://localhost:9000/products';
     var data = {brand: e.target.brand.value,
       name: e.target.name.value,
       package: e.target.package.value,
       description: e.target.description.value,
-      price: e.target.price.value,
-      id: e.target.id.value
+      price: e.target.price.value
     };
     fetch(url, {
-      method: 'PUT', //POST
+      method: 'POST', //POST
       body: JSON.stringify(data),
       headers:{
         'Content-Type': 'application/json'
       }
-    }).then(res => res.json())
-        .catch(err => err) 
+    }).then(res => console.log(res));
   }
 
     return (
