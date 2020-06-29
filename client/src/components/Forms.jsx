@@ -45,10 +45,15 @@ export default function Form({products}) {
                     <input name='description' type="text" className="form-control" id="inputDescription" placeholder="Cerveza rubia de malta..."  required />
                 </div>
                 <div className="form-row">
-                    <div className="form-group col-md-6">
+                    {/* <div className="form-group col-md-6">
                         <label for="inputPresentacion">Presentación</label>
+<<<<<<< HEAD
                         <input name='presentación' type="text" className="form-control" id="inputPresentacion"  required />
                     </div>
+=======
+                        <input type="text" className="form-control" id="inputPresentacion"/>
+                    </div> */}
+>>>>>>> d4e2687467d99a58b9704301dc83acf7d153aa95
                     <div className="form-group col-md-4">
                         <label for="inputPackage">Package</label>
                         <select name='package' id="inputPackage" className="form-control"  required>

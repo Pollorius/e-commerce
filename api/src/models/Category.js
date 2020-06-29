@@ -11,9 +11,23 @@ const Category = (sequelize, S) => {
         name: {
             type: S.STRING,
             allowNull: false,
+<<<<<<< HEAD
         }
+=======
+        }        
+>>>>>>> d4e2687467d99a58b9704301dc83acf7d153aa95
     });
     
+    C.beforeCreate(async (category, options) => {
+        const capName = category.name.charAt(0).toUpperCase() + category.name.slice(1);
+        category.name = capName
+      });
+    
+    C.beforeUpdate(async (category, options) => {
+    const capName = category.name.charAt(0).toUpperCase() + category.name.slice(1);
+    category.name = capName
+    });
+
     return C;
 }
 

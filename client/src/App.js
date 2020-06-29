@@ -1,7 +1,13 @@
+<<<<<<< HEAD
 import React, {Component} from 'react';
 //import logo from './logo.svg';
 import './App.css';
 //import Card from './components/Card.jsx';
+=======
+import React, { Component } from 'react';
+//import logo from './logo.svg';
+import './App.css';
+>>>>>>> d4e2687467d99a58b9704301dc83acf7d153aa95
 import Cards from './components/Cards.jsx';
 //import SearchBar from './components/SearchBar.jsx';
 import Nav from './components/Nav.jsx'
@@ -65,11 +71,18 @@ class App extends Component {
     .catch(err => err) 
   }
 
+<<<<<<< HEAD
   
   onFilter(id) {
     let product = this.state.products.filter(c => c.id === parseInt(id));
     if(product.length > 0) {
         return product[0];
+=======
+  onFilter(id) {
+    let product = this.state.products.filter(p => p.id === parseInt(id));
+    if(product.length > 0) { 
+      return product[0];
+>>>>>>> d4e2687467d99a58b9704301dc83acf7d153aa95
     } else {
         return null;
     }
@@ -102,6 +115,7 @@ class App extends Component {
                render ={() => <Categories categories={categories}/>}
                
               />
+<<<<<<< HEAD
               
              
               
@@ -116,11 +130,16 @@ class App extends Component {
               <Route
                exact path='/products/:id/addcat'
                render ={()=> <FormCat onChange={this.handleChange} categories={categories}/> }
+=======
+            <Route
+               exact path='/products/:id/edit'
+               render ={()=> <Form onChange={this.handleChange}/> }
+>>>>>>> d4e2687467d99a58b9704301dc83acf7d153aa95
               />
               <Route 
                 exact path='/products/:id'
                 render ={({match}) => <ProductItem 
-                products={this.onFilter(match.params.id)} />}
+                product={this.onFilter(match.params.id)} />}
               />
             </div>
             <hr />   

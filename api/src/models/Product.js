@@ -27,6 +27,9 @@ const Product = (sequelize, S) => {
     description: {
       type: S.STRING,
     },
+    imageUrl: {
+      type: S.STRING,
+    }
   });
   
   P.beforeCreate(async (product, options) => {
