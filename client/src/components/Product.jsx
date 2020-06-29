@@ -9,7 +9,7 @@ export default function ProductItem(props) {
         <div>
             <div className={style.productContainer}>
                 <div>
-                    <img src={Image} alt="..." />
+                    <img src={Image} alt={Image} />
                     <div>
                         <h5 className="card-title"> {props.product.name} </h5>
                         <p className="card-text"> {props.product.brand} </p>

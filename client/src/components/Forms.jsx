@@ -91,10 +91,14 @@ export default function Form(){
                     </div>
                 </div>
                     <div className="form-group">
-                        <label for="exampleFormControlFile1">Upload your product image</label>
+                        <label for="exampleFormControlFile1">
+                            Upload your product image
+                        </label>
                         <input type="file" className="form-control-file" id="exampleFormControlFile1"/>
                     </div>
-                <button type="submit" className="btn btn-primary">Submit Product</button>
+                <button type="submit" className="btn btn-primary">
+                    Submit Product
+                </button>
             </form>
         </div>
     )

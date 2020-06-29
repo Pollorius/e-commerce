@@ -1,8 +1,7 @@
 import React from 'react';
 import Card from './Card.jsx';
 
-export default function Cards({ products }) {
-   
+export default function Cards({ products }) {   
     return (
         <div className='cards'>
             {products.map(p => <Card
@@ -13,6 +12,7 @@ export default function Cards({ products }) {
                 package={p.package}
                 description={p.description}
                 price={p.price}
+                imageUrl={p.imageUrl}
             />)}
         </div>
     );
