@@ -10,12 +10,16 @@ import  { BrowserRouter, Route } from 'react-router-dom';
 import Home from './components/Home.jsx';
 import ProductItem from './components/Product.jsx';
 import FormAdd from './components/FormAdd.jsx';
-
+import Categories from './components/categories.jsx'
+import FormCat from './components/FormCat.jsx';
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {products:[]};
+    this.state = {
+      products:[],
+      categories: []
+    };
     this.onFilter = this.onFilter.bind(this);
     this.onSearch =this.onSearch.bind(this)
   } 
@@ -25,12 +29,21 @@ class App extends Component {
           .then(res => this.setState({ products:res }))
           .catch(err => err)
           }
+
+  callApiCategories() {
+      fetch("http://localhost:9000/categories")
+          .then(res => res.json())
+          .then(res => this.setState({ categories:res }))
+          .catch(err => err)
+          }
  
   componentDidMount() {
       this.callApi();
+      this.callApiCategories();
   }
   handleChange(event) {
     this.setState({products: event.target.products});
+    this.setState({categories: event.target.categories});
   }
   onClose(id) {
      this.setState(products => products.filter(c => c.id !== id));
@@ -64,7 +77,7 @@ class App extends Component {
 
 
   render() {
-    const {products} = this.state;
+    const {products, categories} = this.state;
     
       return (
           <div className="App">
@@ -78,22 +91,32 @@ class App extends Component {
                exact
                path='/'
                render={() => <Home />}
-               />
+             />
+              
             <Route 
                exact path='/products'
-               render ={() => <Cards products={products} />}
+               render ={() => <Cards products={products} categories={categories}/>}
+               />  
+            <Route 
+               exact path='/products'
+               render ={() => <Categories categories={categories}/>}
                
               />
               
+             
+              
               <Route
                exact path='/products/:id/new'
-               render ={()=> <FormAdd onChange={this.handleChange}  products={products} /> }
+               render ={()=> <FormAdd onChange={this.handleChange}  products={products} categories={categories} /> }
               />
               <Route
                exact path='/products/:id/edit'
                render ={()=> <Form onChange={this.handleChange} products={products}/> }
               />
-              
+              <Route
+               exact path='/products/:id/addcat'
+               render ={()=> <FormCat onChange={this.handleChange} categories={categories}/> }
+              />
               <Route 
                 exact path='/products/:id'
                 render ={({match}) => <ProductItem 

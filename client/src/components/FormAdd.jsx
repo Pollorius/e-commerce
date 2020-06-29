@@ -2,8 +2,8 @@ import React from 'react';
 import style from './Forms.module.css';
 //import { useForm } from 'react-hook-form';
 
-export default function Form() {
-
+export default function Form({categories}) {
+    console.log({categories})
     // const { register } = useForm();
     // const onSubmit = data => console.log(data);
     
@@ -15,7 +15,8 @@ export default function Form() {
       package: e.target.package.value,
       description: e.target.description.value,
       price: e.target.price.value,
-      id: e.target.id.value
+      id: e.target.id.value,
+      categories: e.target.categories.value
     };
     console.log(data)
     fetch(url, {
@@ -68,6 +69,14 @@ export default function Form() {
                 <div className="form-group">
                     <label for="exampleFormControlFile1">Upload your product image</label>
                     <input type="file" className="form-control-file" id="exampleFormControlFile1" />
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlSelect2">Example multiple select</label>
+                    <select name='category' multiple className="form-control" id="exampleFormControlSelect2">
+                        <option>{categories.name}</option>
+                        <option>Negra</option>
+                        <option>Roja</option>
+                    </select>
                 </div>
                 <input type="submit" />
             </form>

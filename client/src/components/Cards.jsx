@@ -3,9 +3,10 @@ import Card from './Card.jsx';
 import {Link} from 'react-router-dom';
 import style from './Cards.module.css'
 
-export default function Cards({ products }) {
-   
+export default function Cards({products, categories}) {
+    
     return (
+        <div>
        <div>
         <div className='cards'>
             {products.map(p => <Card
@@ -16,6 +17,7 @@ export default function Cards({ products }) {
                 package={p.package}
                 description={p.description}
                 price={p.price}
+                categories={p.categories}
             />)}
         </div>
         <div className={style.container}>
@@ -27,6 +29,9 @@ export default function Cards({ products }) {
          </div>
          
          </div>
+         
+         </div>
+  
         
         
     );

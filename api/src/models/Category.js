@@ -8,15 +8,9 @@ const Category = (sequelize, S) => {
             autoIncrement: true,
             primaryKey: true
         },        
-        type: {
+        name: {
             type: S.STRING,
             allowNull: false,
-        },
-        prod_method: {
-            type: S.STRING,      
-        },
-        origin: {
-            type: S.STRING,
         }
     });
     
