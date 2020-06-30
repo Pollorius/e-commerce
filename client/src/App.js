@@ -95,7 +95,7 @@ class App extends Component {
             />
             <Route
               exact path='/products/:id/edit'
-              render={() => <Form onChange={this.handleChange} />}
+              render={() => <Form onChange={this.handleChange} products={products} />}
             />
 
             <Route

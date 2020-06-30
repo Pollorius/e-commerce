@@ -1,10 +1,9 @@
 import React from 'react';
 import style from './Forms.module.css';
-//import { useForm } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 
 export default function Form({ products }) {
-
-    // const { register } = useForm();
+    const { register } = useForm();
     // const onSubmit = data => console.log(data);
 
     const handleSubmit = function (e) {
