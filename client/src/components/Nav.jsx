@@ -6,16 +6,14 @@ import { Link } from 'react-router-dom';
 
 function Nav({ onSearch }) {
     return (
-        
         <nav className="navbar navbar-dark bg-dark">
             <Link to='/'>
-            <div className="navbar-brand" href="#">
-                <img src={Logo} width="30" height="30" alt="" loading="lazy" /> Beer O'clock!
+                <div className="navbar-brand" href="#">
+                    <img src={Logo} width="30" height="30" alt="" loading="lazy" /> Beer O'clock!
             </div>
             </Link>
             <SearchBar onSearch={onSearch} />
         </nav>
-
     );
 };
 
