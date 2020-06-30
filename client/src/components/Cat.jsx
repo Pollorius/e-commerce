@@ -1,24 +1,24 @@
 import React from 'react';
 //import Card from './Card.jsx';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 //import style from './Cards.module.css'
 
-export default function Categories({id, name}) {
-    
+export default function Categories({ id, name }) {
+
     return (
         <div>
-         <div >
             <div >
-                <Link to={`/products/${id}`}>
-                <button type="button" Name="btn btn-secondary btn-sm">{name}</button>
-                </Link>
+                <div >
+                    <Link to={`/products/${id}`}>
+                        <button type="button" className="btn btn-secondary btn-sm">{name}</button>
+                    </Link>
+                </div>
+
             </div>
-            
-         </div>
         </div>
-       
-        
-        
+
+
+
     );
 }
 
