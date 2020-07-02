@@ -3,19 +3,19 @@ import React from 'react';
 //import { useForm } from 'react-hook-form';
 import Card from './Card.jsx'
 
-export default function CatCards({ products }) {
+export default function CatCards(props) {
     // const { register } = useForm();
     // const onSubmit = data => console.log(data);
-    console.log({ products })
+    console.log(props)
 
     const handleSubmit = function (e) {
         e.preventDefault();
-        var url = 'http://localhost:9000/products/findByCat';
+        var url = 'http://localhost:9000/products/findByCat/';
         var data = {
-            categoryId: e.target.categoryId.value,
+            categoryId: e.target.categoryId.value
 
         };
-        console.log(data)
+
 
         fetch(url, {
             method: 'GET', //POST
@@ -23,13 +23,14 @@ export default function CatCards({ products }) {
             headers: {
                 'Content-Type': 'application/json'
             }
-        }).then(res => console.log(res));
+        }).then(res => console.log(res))
+            .catch(err => console.log(err))
     }
 
     return (
-        <div name="fetch" className='cards'>
+        <div className='cards'>
             <div className='cards'>
-                {products.map(p => <Card
+                {props.product.map(p => <Card
                     onSubmit={handleSubmit}
                     key={p.id}
                     id={p.id}

@@ -18,7 +18,6 @@ export default function Form({ categories }) {
             description: e.target.description.value,
             price: e.target.price.value,
             id: e.target.id.value,
-            categoryId: e.target.categoryId.value
         };
         console.log(categories)
         fetch(url, {
@@ -72,12 +71,10 @@ export default function Form({ categories }) {
                 </div>
                 <div className="form-group">
                     <label for="exampleFormControlSelect2">Select category</label>
-                    <select name='categoryId' id="inputcategoryId" className="form-control" required>
-                        <option defaultValue>Choose...</option>
+                    <select name='categoryId' multiple className="form-control" id="inputCategoryId">
                         {categories.map(c => <option>
                             {c.name}
                         </option>)}
-
                     </select>
                     {/* <select name='category' multiple className="form-control" id="exampleFormControlSelect2">
                         {categories.map(c => <option>

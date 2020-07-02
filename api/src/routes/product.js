@@ -7,16 +7,25 @@ const Op = Sequelize.Op;
 
 server.get('/', function (req, res, next) {
     if (req.query.search) {
-        const capQuery = req.query.search.charAt(0).toUpperCase() + req.query.search.slice(1)
+        const query = decodeURI(req.query.search)
+        console.log(query)
         Product.findAll({
             where: {
-                [Op.or]: [{ brand: capQuery }, { name: capQuery }]
+                [Op.or]: {
+                    brand: {
+                        [Op.iLike]: `%${query}%`
+                    },
+                    name: {
+                        [Op.iLike]: `%${query}%`
+                    }
+                }
             },
             include: {
                 model: Category,
                 attributes: ["name"],
             }
         }).then(function (products) {
+            console.log(`${products[0].dataValues.brand}${products[0].dataValues.name}`)
             res.json(products);
         });
         return;
@@ -29,6 +38,7 @@ server.get('/', function (req, res, next) {
 
     })
         .then(function (products) {
+
             if (!products) return res.sendStatus(404);
             res.json(products);
         }).catch(function (reason) {
@@ -102,10 +112,12 @@ server.put('/:id', function (req, res, next) {
             id: categoryId
         }
     });
+
     Promise.all([product, category])
         .then(function (values) {
             let prod = values[0];
             let cat = values[1];
+
             Product.update({
                 brand: brand,
                 name: name,
@@ -118,6 +130,7 @@ server.put('/:id', function (req, res, next) {
                     where: {
                         id: req.params.id
                     },
+
                 })
             prod.setCategories(cat)
                 .then(function (category) {
@@ -126,16 +139,21 @@ server.put('/:id', function (req, res, next) {
         }).catch(function (reason) {
             res.status(404).json({ message: "PRODUCT COULDN'T BE UPDATED", data: reason })
         });
+
+
 });
+
 
 server.delete('/:id', function (req, res, next) {
     Product.destroy({
         where: {
             id: req.params.id
         }
+
     }).then(function (deletedCategory) {
         res.status(200).send("PRODUCT SUCCESSFULLY DELETED")
     }).catch(next);
+
 });
 
 

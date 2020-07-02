@@ -9,8 +9,8 @@ export default function Categories({ id, name }) {
         <div>
             <div >
                 <div >
-                    <Link to={`/products/${id}`}>
-                        <button type="button" className="btn">{name}</button>
+                    <Link to={`/products/findByCat`}>
+                        <button type="button" className="btn btn-secondary btn-sm">{name}</button>
                     </Link>
                 </div>
 

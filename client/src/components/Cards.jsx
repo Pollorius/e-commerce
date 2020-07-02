@@ -3,9 +3,8 @@ import Card from './Card.jsx';
 import { Link } from 'react-router-dom';
 import style from './Cards.module.css';
 
-
 export default function Cards({ products }) {
-    console.log(products)
+
     return (
         <div className={style.fondoCards}>
             <div >
@@ -25,7 +24,6 @@ export default function Cards({ products }) {
                     description={p.description}
                     price={p.price}
                     categories={p.categories}
-
                 />)}
 
             </div>

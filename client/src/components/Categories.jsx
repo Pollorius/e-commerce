@@ -7,10 +7,6 @@ import Cat from './Cat.jsx'
 
 
 export default function Categories(props) {
-    const [dropdownOpen, setOpen] = useState(false);
-
-    const toggle = () => setOpen(!dropdownOpen);
-
     return (
         <div>
             {/* <div >
