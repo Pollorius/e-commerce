@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import style from './Cards.module.css';
 
 export default function Cards({ products }) {
-
+    
     return (
         <div>
             <div className='cards'>
@@ -16,8 +16,7 @@ export default function Cards({ products }) {
                     package={p.packaging}
                     description={p.description}
                     price={p.price}
-
-
+                    categories={p.categories}
                 />)}
 
             </div>
