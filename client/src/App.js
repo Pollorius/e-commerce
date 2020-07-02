@@ -108,8 +108,8 @@ class App extends Component {
               render={() => <Categories categories={categories} />}
             />
             <Route
-              exact path='/products/new'
-              render={() => <FormAdd onChange={this.handleChange} categories={categories} products={products} onClick={this.refreshPage} />}
+              exact path='/products/:id/new'
+              render={() => <FormAdd onChange={this.handleChange} categories={categories} products={products} />}
             />
             <Route
               exact path='/products/:id'
@@ -121,7 +121,7 @@ class App extends Component {
               render={({ match }) => <Form onChange={this.handleChange} product={this.onFilter(match.params.id)} categories={categories} onClick={this.refreshPage} />}
             />
             <Route
-              exact path='/products/addcat'
+              exact path='/products/:id/addcat'
               render={() => <FormCat onClick={this.refreshPage} onChange={this.handleChange} categories={categories} />}
             />
              <Route
