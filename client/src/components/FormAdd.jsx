@@ -1,7 +1,7 @@
 import React from 'react';
 import style from './Forms.module.css';
 //import { useForm } from 'react-hook-form';
-import Cat from './Cat.jsx'
+
 
 export default function Form({ categories }) {
 
@@ -18,9 +18,9 @@ export default function Form({ categories }) {
             description: e.target.description.value,
             price: e.target.price.value,
             id: e.target.id.value,
-
+            categoryId: e.target.categoryId.value
         };
-
+        console.log(categories)
         fetch(url, {
             method: 'POST', //POST
             body: JSON.stringify(data),
@@ -29,6 +29,7 @@ export default function Form({ categories }) {
             }
         }).then(res => console.log(res));
     }
+
 
     return (
         <div className={style.container}>
@@ -52,7 +53,7 @@ export default function Form({ categories }) {
                     <div className="form-group col-md-4">
                         <label for="inputPackage">Package</label>
                         <select name='package' id="inputPackage" className="form-control" required>
-                            <option selected>Choose...</option>
+                            <option defaultValue>Choose...</option>
                             <option>473cc</option>
                             <option>710cc</option>
                             <option>745cc</option>
@@ -69,16 +70,20 @@ export default function Form({ categories }) {
                     <label for="exampleFormControlFile1">Upload your product image</label>
                     <input type="file" className="form-control-file" id="exampleFormControlFile1" />
                 </div>
-                <div class="form-group">
+                <div className="form-group">
                     <label for="exampleFormControlSelect2">Select category</label>
-                    <select name='category' multiple className="form-control" id="exampleFormControlSelect2">
-                        <option>
-                            {categories.map(c => <Cat
-                                name={c.name}
-                            />)}
-                        </option>
+                    <select name='categoryId' id="inputcategoryId" className="form-control" required>
+                        <option defaultValue>Choose...</option>
+                        {categories.map(c => <option>
+                            {c.name}
+                        </option>)}
 
                     </select>
+                    {/* <select name='category' multiple className="form-control" id="exampleFormControlSelect2">
+                        {categories.map(c => <option>
+                            {c.name}
+                        </option>)}
+                    </select> */}
                 </div>
                 <input type="submit" />
             </form>

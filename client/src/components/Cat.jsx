@@ -10,7 +10,7 @@ export default function Categories({ id, name }) {
             <div >
                 <div >
                     <Link to={`/products/${id}`}>
-                        <button type="button" className="btn btn-secondary btn-sm">{name}</button>
+                        <button type="button" className="btn">{name}</button>
                     </Link>
                 </div>
 

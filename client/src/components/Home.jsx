@@ -5,10 +5,10 @@ import { Link } from 'react-router-dom';
 export default function Home() {
     return (
         <div>
-            <img src={Imagen} alt='imagen no encontrada' />
+            <img className="mt-3" src={Imagen} alt='imagen no encontrada' />
             <Link to='/products'>
                 <div>
-                    <button type="button" className="btn btn-secondary btn-lg">Entrar</button>
+                    <button type="button" className="btn btn-secondary btn-lg mt-3">Entrar</button>
                 </div>
             </Link>
         </div>
