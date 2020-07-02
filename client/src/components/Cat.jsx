@@ -3,32 +3,33 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 //import style from './Cards.module.css'
 
-export default function Categories({id, name}) {
+export default function Cat({name, id}) {
 
-    // const handleSubmit = function (e) {
-    //     e.preventDefault();
-    //     var url = 'http://localhost:9000/categories';
-    //     var data = {
-    //         name: e.target.name.value,
-    //         id: e.target.id.value
-    //     };
-    //     console.log(data)
+    const handleSubmit = function (e) {
+        e.preventDefault();
+        var url = 'http://localhost:9000/products/findByCat/';
+        var data = {
+            categoryId: e.target.categoryId.value
 
-    //     fetch(url, {
-    //         method: 'GET', //POST
-    //         body: JSON.stringify(data),
-    //         headers: {
-    //             'Content-Type': 'application/json'
-    //         }
-    //     }).then(res => console.log(res));
-    // }
+        };
+        
+
+        fetch(url, {
+            method: 'GET', //POST
+            body: JSON.stringify(data),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(res => console.log(res))
+        .catch(err => console.log(err))
+    }
 
     return (
         <div>
             <div >
                 <div >
-                    <Link  to={`/products/`}>
-                        <button type="button" className="btn btn-secondary btn-sm">{name}</button>
+                    <Link  to={`/products/findByCat`}>
+                        <button onSubmit={handleSubmit}  type="button" className="btn btn-secondary btn-sm">{name}</button>
                     </Link>
                 </div>
 

@@ -3,23 +3,34 @@ import React from 'react';
 //import { useForm } from 'react-hook-form';
 import Card from './Card.jsx'
 
-export default function CatCards({products}) {
+export default function CatCards(props) {
     // const { register } = useForm();
     // const onSubmit = data => console.log(data);
-    console.log({products})
+    console.log(props)
     
-    // callApiPCat() {
-    //     fetch("http://localhost:9000/products/findByCat")
-    //       .then(res => res.json())
-    //       .then(res => this.setState({ categories: res }))
-    //       .catch(err => err)
+    // const handleSubmit = function (e) {
+    //     e.preventDefault();
+    //     var url = 'http://localhost:9000/products/findByCat/';
+    //     var data = {
+    //         categoryId: e.target.categoryId.value
+
+    //     };
+        
+
+    //     fetch(url, {
+    //         method: 'GET', //POST
+    //         body: JSON.stringify(data),
+    //         headers: {
+    //             'Content-Type': 'application/json'
+    //         }
+    //     }).then(res => console.log(res))
+    //     .catch(err => console.log(err))
     // }
 
     return (
         <div className='cards'>
             <div className='cards'>
-                {products.map(p => <Card 
-                    
+                {props.product.map(p => <Card 
                     key={p.id}
                     id={p.id}
                     name={p.name}
@@ -31,11 +42,8 @@ export default function CatCards({products}) {
 
 
                 />)}
-
             </div>
 
             </div>
     )
 }
-
-

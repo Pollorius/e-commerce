@@ -130,6 +130,11 @@ class App extends Component {
               exact path='/products/addcat'
               render={() => <FormCat onClick={this.refreshPage} onChange={this.handleChange} categories={categories} />}
             />
+             <Route
+              exact path='/products/findByCat'
+              render={() => <CatCards
+                product={products}  />}
+            />
           </div>
           <hr />
 
