@@ -5,14 +5,14 @@ import { Link } from 'react-router-dom';
 
 
 
-export default function Card({ name, brand, description, price, id, packaging , categories}) {
+export default function Card({ name, brand, description, price, id, packaging, categories }) {
     return (
         <div className={style.container}>
             <div className={style.ancho}>
                 <div className="card mb-3 "  >
                     <div className="row no-gutters">
                         <div className="col-md-4">
-                            <img src={Imagen} className="card-img" alt="" height="200px" width="500px" />
+                            <img src={Imagen} className="card-img" alt={Imagen} height="200px" width="500px" />
                         </div>
                         <div className="col-md-8">
                             <div className="card-body">

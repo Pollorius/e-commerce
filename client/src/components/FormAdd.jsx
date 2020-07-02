@@ -1,7 +1,8 @@
 import React from 'react';
 import style from './Forms.module.css';
 //import { useForm } from 'react-hook-form';
-// import Cat from './Cat.jsx'
+
+
 
 export default function Form({categories}) {
     // const { register } = useForm();
@@ -17,8 +18,6 @@ export default function Form({categories}) {
             description: e.target.description.value,
             price: e.target.price.value,
             id: e.target.id.value,
-            categoryId: e.target.categoryId.value
-
         };
         console.log(data)
 

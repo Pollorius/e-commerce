@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 //import style from './Cards.module.css'
 import Cat from './Cat.jsx'
 export default function Categories(props) {
-
     return (
         <div>
             <div >
