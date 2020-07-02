@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 
 
-export default function Card({ name, brand, description, price, id, packaging }) {
+export default function Card({ name, brand, description, price, id, packaging , categories}) {
     return (
         <div className={style.container}>
             <div className={style.ancho}>
@@ -21,6 +21,12 @@ export default function Card({ name, brand, description, price, id, packaging })
                                 <p className="card-text"> {packaging} </p>
                                 <p className="card-text"> {description} </p>
                                 <p className="card-text"> {price} </p>
+                                <ul className="card-text">
+                                {categories.map(c =>
+                                    <li className="list-unstyled">
+                                        {c.name}
+                                    </li>)} 
+                                </ul>
                                 <Link to={`/products/${id}`} >
                                     <p className="card-text"><small className="text-muted">Ver más...</small></p>
                                 </Link>

@@ -11,7 +11,8 @@ import ProductItem from './components/Product.jsx';
 import FormAdd from './components/FormAdd.jsx';
 import Categories from './components/Categories.jsx';
 import FormCat from './components/FormCat.jsx'
-
+import CatCards from './components/CatCards.jsx'
+//import Cat from './components/Cat.jsx'
 class App extends Component {
   constructor(props) {
     super(props);
@@ -31,10 +32,12 @@ class App extends Component {
       .then(res => this.setState({ categories: res }))
       .catch(err => err)
   }
+  
 
   componentDidMount() {
     this.callApi();
     this.callApiCategory();
+
   }
   handleChange(event) {
     this.setState({ products: event.target.products });
@@ -67,7 +70,18 @@ class App extends Component {
       return null;
     }
   }
+  onFilterCat(categoryId) {
+    let categorie = this.state.products.filter(p => p.categoryId === parseInt(categoryId));
+    if (categorie.length > 0) {
+      return categorie[0];
+    } else {
+      return null;
+    }
+  }
 
+  refreshPage() {
+    this.componentDidMount();
+  }
 
   render() {
     const { products, categories } = this.state;
@@ -91,25 +105,30 @@ class App extends Component {
             />
             <Route
               exact path='/products/:id/new'
-              render={() => <FormAdd onChange={this.handleChange} categories={categories} products={products} />}
+              render={() => <FormAdd categories={categories}  />}
             />
             <Route
               exact path='/products/:id/edit'
-              render={() => <Form onChange={this.handleChange} />}
+              render={({match}) => <Form onChange={this.handleChange} product={this.onFilter(match.params.id)} categories={categories}/>}
             />
 
             <Route
               exact path='/products/:id'
               render={({ match }) => <ProductItem
                 product={this.onFilter(match.params.id)} />}
-            />
+            />   
+            {/* <Route
+              exact path='/products/:name/'
+              render={({ match }) => <CatCards
+                categorie={this.onFilterCat(match.params.categoryId)} products= {products} onChange={this.handleChange}/>}
+            /> */}
             <Route
               exact path='/products'
               render={() => <Categories categories={categories} />}
             />
             <Route
-              exact path='/products/:id/addcat'
-              render={() => <FormCat onChange={this.handleChange} categories={categories} />}
+              exact path='/products/addcat'
+              render={() => <FormCat onClick={this.refreshPage} onChange={this.handleChange} categories={categories} />}
             />
           </div>
           <hr />

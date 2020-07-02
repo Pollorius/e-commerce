@@ -4,6 +4,7 @@ import style from './Product.module.css';
 import { Link } from 'react-router-dom';
 
 export default function ProductItem(props) {
+    
     return (
         <div>
             <div className={style.productContainer}>
@@ -12,6 +13,9 @@ export default function ProductItem(props) {
                     <div>
                         <h5 className="card-title"> {props.product.name} </h5>
                         <p className="card-text"> {props.product.brand} </p>
+                        <p className="card-text"> {props.product.packaging} </p>
+                        <p className="card-text"> {props.product.price} </p>
+                        {/* <p className="card-text"> {props.product.categories} </p> */}
                         <p className="card-text">
                             <small className="text-muted">
                                 {props.product.description}
@@ -26,7 +30,7 @@ export default function ProductItem(props) {
                         <button type="button"
                             className="btn btn-secondary btn-sm">
                             Edit
-                    </button>
+                        </button>
                     </Link>
                 </div>
             </div>

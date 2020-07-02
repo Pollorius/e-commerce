@@ -1,13 +1,12 @@
 import React from 'react';
 import style from './Forms.module.css';
 //import { useForm } from 'react-hook-form';
-import Cat from './Cat.jsx'
+// import Cat from './Cat.jsx'
 
-export default function Form({ categories }) {
-
+export default function Form({categories}) {
     // const { register } = useForm();
     // const onSubmit = data => console.log(data);
-
+    
     const handleSubmit = function (e) {
         e.preventDefault();
         var url = 'http://localhost:9000/products';
@@ -18,8 +17,10 @@ export default function Form({ categories }) {
             description: e.target.description.value,
             price: e.target.price.value,
             id: e.target.id.value,
+            categoryId: e.target.categoryId.value
 
         };
+        console.log(data)
 
         fetch(url, {
             method: 'POST', //POST
@@ -71,16 +72,15 @@ export default function Form({ categories }) {
                 </div>
                 <div class="form-group">
                     <label for="exampleFormControlSelect2">Select category</label>
-                    <select name='category' multiple className="form-control" id="exampleFormControlSelect2">
-                        <option>
-                            {categories.map(c => <Cat
-                                name={c.name}
-                            />)}
-                        </option>
-
+                    <select name='categoryId' multiple className="form-control" id="inputCategoryId">
+                        {categories.map(c =><option>
+                        {c.name}
+                        </option>)}
                     </select>
+
+                    
                 </div>
-                <input type="submit" />
+                <input onclick="location.reload()"  type="submit" />
             </form>
         </div>
     )

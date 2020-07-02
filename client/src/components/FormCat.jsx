@@ -2,7 +2,7 @@ import React from 'react';
 import style from './Forms.module.css';
 //import { useForm } from 'react-hook-form';
 
-export default function FormCat() {
+export default function FormCat({refreshPage}) {
 
     // const { register } = useForm();
     // const onSubmit = data => console.log(data);
@@ -24,6 +24,8 @@ export default function FormCat() {
     }).then(res => console.log(res));
   }
 
+  
+
     return (
         <div className={style.container}>
             <form onSubmit={handleSubmit} name="fetch">
@@ -33,7 +35,7 @@ export default function FormCat() {
                         <input name='name' type="text" className="form-control" id="inputName"  required />
                     </div>
                 </div>
-                <input type="submit" />
+                <input onClick={refreshPage} type="submit" />
             </form>
         </div>
     )

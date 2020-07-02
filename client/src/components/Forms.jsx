@@ -2,14 +2,14 @@ import React from 'react';
 import style from './Forms.module.css';
 //import { useForm } from 'react-hook-form';
 
-export default function Form({ products }) {
+export default function Form({ product, categories }) {
 
     // const { register } = useForm();
     // const onSubmit = data => console.log(data);
 
     const handleSubmit = function (e) {
         e.preventDefault();
-        var url = `http://localhost:9000/products/${products[0].id}`;
+        var url = `http://localhost:9000/products/${product.id}`;
         var data = {
             brand: e.target.brand.value,
             name: e.target.name.value,
@@ -62,12 +62,22 @@ export default function Form({ products }) {
                     <label for="inputPrice">Price</label>
                     <input name='price' type="text" className="form-control" id="inputPrice" required />
                 </div>
+                <div class="form-group">
+                    <label for="exampleFormControlSelect2">Select category</label>
+                    <select name='categoryId' multiple className="form-control" id="inputCategoryId">
+                        {categories.map(c =><option>
+                        {c.name}
+                        </option>)}
+                    </select>
+
+                    
+                </div>
 
                 <div className="form-group">
                     <label for="exampleFormControlFile1">Upload your product image</label>
                     <input type="file" className="form-control-file" id="exampleFormControlFile1" />
                 </div>
-                <input type="submit" />
+                <input type="submit"/>
             </form>
         </div>
     )

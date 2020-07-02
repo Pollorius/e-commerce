@@ -1,7 +1,7 @@
 import React from 'react';
 //import Card from './Card.jsx';
 import { Link } from 'react-router-dom';
-import style from './Cards.module.css'
+//import style from './Cards.module.css'
 import Cat from './Cat.jsx'
 export default function Categories(props) {
 
@@ -18,8 +18,8 @@ export default function Categories(props) {
                 </div>
 
             </div>
-            <div className={style.container}>
-                <div >
+            <div >
+                <div > 
                     <Link to={`/products/${props.categories.id}/addcat`}>
                         <button type="button" className="btn btn-secondary btn-sm">Agregar Categoria</button>
                     </Link>
