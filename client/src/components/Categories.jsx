@@ -3,10 +3,15 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import { ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+
 import Cat from './Cat.jsx'
 
 
 export default function Categories(props) {
+    const [dropdownOpen, setOpen] = useState(false);
+
+    const toggle = () => setOpen(!dropdownOpen);
+
     return (
         <div>
             {/* <div >
