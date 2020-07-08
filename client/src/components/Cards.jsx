@@ -1,21 +1,25 @@
 import React from 'react';
 import Card from './Card.jsx';
 import { Link } from 'react-router-dom';
-import style from './Cards.module.css';
+//import style from './Cards.module.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { getProducts } from '../actions/ProductAction.js';
+import { useEffect } from 'react';
 
-export default function Cards({ products }) {
+export default function Cards() {
+
+    const dispatch = useDispatch();
+    const products = useSelector(store => store.products)
+
+
+    // const categories = UseSelector(store => store.categories)
+
+    useEffect(() => dispatch(getProducts()), []);
 
     return (
-        <div className={style.fondoCards}>
-            <div >
-                <div >
-                    <Link to={`/products/${products.id}/new`}>
-                        <button type="button" className="btn btn-secondary mt-3 mb-3">Add Product</button>
-                    </Link>
-                </div>
-            </div>
-            <div className='cards'>
-                {products.map(p => <Card
+        <div>
+            <div className='cards row m-5'>
+                {products.products.map(p => <Card
                     key={p.id}
                     id={p.id}
                     name={p.name}
@@ -27,7 +31,14 @@ export default function Cards({ products }) {
                 />)}
 
             </div>
+            <div >
+                <div >
+                    <Link to={`/products/addProduct`}>
+                        <button type="button" className="btn btn-secondary btn-sm">Agregar Producto</button>
+                    </Link>
+                </div>
 
+            </div>
 
 
         </div>

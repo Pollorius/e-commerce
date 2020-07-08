@@ -28,3 +28,10 @@ margin-bottom: 3px;
     position: relative;
 width: 100%;
 }
+.cardwidth{
+    width: 18rem;
+}
+.cardcontainer{
+    display: flex;
+    align-items: center;
+}
