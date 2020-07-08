@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 
 
 export default function Card({ name, brand, description, price, id, packaging, categories }) {
+    
     return (
         <div className={style.container}>
             <div className={style.ancho}>
@@ -29,6 +30,12 @@ export default function Card({ name, brand, description, price, id, packaging, c
                                 </ul>
                                 <Link to={`/products/${id}`} >
                                     <p className="card-text"><small className="text-muted">Ver más...</small></p>
+                                </Link>
+                                <Link to={`/order/`} >
+                                    <button type="button"
+                                        className="btn btn-secondary btn-sm">
+                                        Agregar a la orden
+                                    </button>
                                 </Link>
 
                             </div>

@@ -1,38 +1,58 @@
 import React from 'react';
 import style from './Forms.module.css';
 //import { useForm } from 'react-hook-form';
+import {useDispatch, useSelector} from 'react-redux';
+import {addProduct} from '../actions/ProductAction.js';
+import {useEffect} from 'react';
+import {getCategories} from '../actions/CategoryActions.js';
+import {useState} from 'react';
 
-
-
-export default function Form({categories}) {
-    // const { register } = useForm();
-    // const onSubmit = data => console.log(data);
+export default function Form() {
     
+    const dispatch = useDispatch();
+
     const handleSubmit = function (e) {
         e.preventDefault();
-        var url = 'http://localhost:9000/products';
-        var data = {
-            brand: e.target.brand.value,
-            name: e.target.name.value,
-            package: e.target.package.value,
-            description: e.target.description.value,
-            price: e.target.price.value,
-            id: e.target.id.value,
-        };
-        console.log(data)
-
-        fetch(url, {
-            method: 'POST', //POST
-            body: JSON.stringify(data),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        }).then(res => console.log(res));
+        dispatch(addProduct(state));
     }
+    
+    const [state, setState] = useState({
+        brand: '',
+        name: '',
+        description: '',
+        package: '',
+        price: '',
+        categoryId: '',
+        
+    });
+    const handleInputChange = function(e) {
+        setState({
+            ...state,
+            [e.target.name]: e.target.value,
+                       
+        })
+    }
+
+    // const dispatch = useDispatch();
+    // const products = useSelector(store => store.products)
+    const categories = useSelector(store => store.categories)
+    // console.log(products)
+    
+
+    //     useEffect(() => dispatch(addProduct()),[]);
+    //     useEffect(() => dispatch(getCategories()),[]);
+        
+    //     function submitForm (e){
+    //         e.preventDefault();
+    //         this.props.dispatch({
+    //           type: "SUBMIT_FORM"
+    //         });
+    //       };
 
     return (
         <div className={style.container}>
-            <form onSubmit={handleSubmit} name="fetch">
+            <form onSubmit={handleSubmit} onChange={handleInputChange}> 
+            {/* <form onSubmit={handleSubmit} name="fetch"> */}
                 <div className="form-row">
                     <div className="form-group col-md-6">
                         <label for="inputBrand">Brand</label>
@@ -69,17 +89,18 @@ export default function Form({categories}) {
                     <label for="exampleFormControlFile1">Upload your product image</label>
                     <input type="file" className="form-control-file" id="exampleFormControlFile1" />
                 </div>
+                
                 <div class="form-group">
                     <label for="exampleFormControlSelect2">Select category</label>
                     <select name='categoryId' multiple className="form-control" id="inputCategoryId">
-                        {categories.map(c =><option>
+                        {categories.categories.map(c =><option>
                         {c.name}
                         </option>)}
                     </select>
 
                     
                 </div>
-                <input onclick="location.reload()"  type="submit" />
+                <input  type="submit" />
             </form>
         </div>
     )
