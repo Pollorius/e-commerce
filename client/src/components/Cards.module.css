@@ -39,15 +39,16 @@
     border-radius: .25rem;
     padding: .375rem .75rem;
     border: 1px solid lightgray;
+    width: 500px;
+    margin-top: 13px;
 }
-
 .titulo {
     margin: 31px;
 }
 
 .greenBtn {
-    border-color: #1e7e34 !important;
-    color: #28a745;
+    border-color: black !important;
+    color: black;
     background-color: white;
     display: inline-block;
     font-weight: 400;
@@ -62,7 +63,12 @@
 }
 
 .greenBtn:hover {
-    color: #fff;
-    background-color: #218838;
-    border-color: #1e7e34;
+    color:white;
+    background-color: black;
+    border-color: white;
+    
+}
+
+.body{
+    background-color: darkgray;
 }
