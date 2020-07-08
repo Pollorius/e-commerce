@@ -12,7 +12,7 @@ export default function FormCat(match) {
   
   
 
-      useEffect(() => dispatch(addCategory(match.params.id)),[]);
+      useEffect(() => dispatch(addCategory(match.match.params.id)),[]);
 
   
 
