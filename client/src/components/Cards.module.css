@@ -1,18 +1,4 @@
-.redBtn {
-    background-color: #c82333;
-    float: right;
-    margin: 10px;
-    border: 1px solid transparent;
-    border-radius: .25rem;
-    color: white;
-    font-family: s-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-}
 
-.redBtn:hover {
-    color: #fff;
-    background-color: #c82333;
-    border-color: #bd2130;
-}
 
 .container {
     border: 1px solid lightgray;
@@ -47,8 +33,8 @@
 }
 
 .greenBtn {
-    border-color: black !important;
-    color: black;
+    border-color: cadetblue !important;
+    color: cadetblue;
     background-color: white;
     display: inline-block;
     font-weight: 400;
@@ -63,12 +49,10 @@
 }
 
 .greenBtn:hover {
-    color:white;
-    background-color: black;
-    border-color: white;
-    
+    color: #fff;
+    background-color: cadetblue;
+    border-color: cadetblue;
 }
-
-.body{
+body{
     background-color: darkgray;
 }

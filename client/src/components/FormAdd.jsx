@@ -1,37 +1,29 @@
 import React from 'react';
 import style from './Forms.module.css';
-//import { useForm } from 'react-hook-form';
-import {useDispatch, useSelector} from 'react-redux';
-import {addProduct} from '../actions/ProductAction.js';
-import {useEffect} from 'react';
-import {getCategories} from '../actions/CategoryActions.js';
-import {useState} from 'react';
+import { useForm } from 'react-hook-form';
+import { useDispatch, useSelector } from 'react-redux';
+import { addProduct } from '../actions/ProductAction.js';
+import { useEffect } from 'react';
+import { getCategories } from '../actions/CategoryActions.js';
 
-export default function Form() {
-    
+
+export default function Form(match) {
+
     const dispatch = useDispatch();
+    const products = useSelector(store => store.products)
+    const categories = useSelector(store => store.categories)
+    console.log(products)
 
-    const handleSubmit = function (e) {
+
+    useEffect(() => dispatch(addProduct()), []);
+    useEffect(() => dispatch(getCategories()), []);
+
+    function submitForm(e) {
         e.preventDefault();
-        dispatch(addProduct(state));
-    }
-    
-    const [state, setState] = useState({
-        brand: '',
-        name: '',
-        description: '',
-        package: '',
-        price: '',
-        categoryId: '',
-        
-    });
-    const handleInputChange = function(e) {
-        setState({
-            ...state,
-            [e.target.name]: e.target.value,
-                       
-        })
-    }
+        this.props.dispatch({
+            type: "SUBMIT_FORM"
+        });
+    };
 
     // const dispatch = useDispatch();
     // const products = useSelector(store => store.products)
@@ -51,8 +43,8 @@ export default function Form() {
 
     return (
         <div className={style.container}>
-            <form onSubmit={handleSubmit} onChange={handleInputChange}> 
-            {/* <form onSubmit={handleSubmit} name="fetch"> */}
+            <form>
+                {/* <form onSubmit={handleSubmit} name="fetch"> */}
                 <div className="form-row">
                     <div className="form-group col-md-6">
                         <label for="inputBrand">Brand</label>
@@ -89,18 +81,18 @@ export default function Form() {
                     <label for="exampleFormControlFile1">Upload your product image</label>
                     <input type="file" className="form-control-file" id="exampleFormControlFile1" />
                 </div>
-                
+
                 <div class="form-group">
                     <label for="exampleFormControlSelect2">Select category</label>
                     <select name='categoryId' multiple className="form-control" id="inputCategoryId">
-                        {categories.categories.map(c =><option>
-                        {c.name}
+                        {categories.categories.map(c => <option>
+                            {c.name}
                         </option>)}
                     </select>
 
-                    
+
                 </div>
-                <input  type="submit" />
+                <input onSubmit={submitForm} type="submit" />
             </form>
         </div>
     )

@@ -33,12 +33,5 @@ export default function productReducer ( state= inicialState, action){
 
         }
     }
-    if (action.type === GET_PRODUCT_BY_CATEGORY ){
-        return {
-            ...state,
-            products: action.payload
-
-        }
-    }
     return state;
 }

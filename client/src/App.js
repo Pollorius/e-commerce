@@ -10,31 +10,31 @@ import Home from './components/Home.jsx';
 import ProductItem from './components/Product.jsx';
 import FormAdd from './components/FormAdd.jsx';
 import Categories from './components/Categories.jsx';
-import FormCat from './components/FormCat.jsx'
+import FormCat from './components/FormCat.jsx';
+import FormUser from './components/FormUser.jsx'
 // import CatCards from './components/CatCards';
 // import {connect} from 'react-redux';
 // import {getProducts} from './actions/ProductAction.js';
-import { Route } from 'react-router-dom'
+
 import { BrowserRouter } from 'react-router-dom';
 import Order from './components/Order.jsx'
-import FormUser from './components/FormUser.jsx'
+import { Route } from 'react-router-dom';
 
-function App (){
+function App() {
 
-  return(
+  return (
     <BrowserRouter>
-      <div className='App'> 
-        
-          <Route path='/' component={Nav}/>
-          <Route exact path='/' component={Home} />
-          <Route path='/products' component={Cards}/>
-          <Route path='/products/:id' component={ProductItem}/>
-          <Route path='/products/:id/edit' component={Form}/>
-          <Route path='/products' component={Categories} />
-          <Route path='/products/addProduct' component={FormAdd}  />
-          <Route path='/products/addcat' component={FormCat}/>
-          <Route path='/order' component={Order}/>
-          <Route path='/formuser' component={FormUser}/>
+      <div className='App'>
+        <Route path='/' component={Nav} />
+        <Route exact path='/' component={Home} />
+        <Route path='/products' component={Cards} />
+        <Route path='/products/:id' component={ProductItem} />
+        <Route path='/products/:id/edit' component={Form} />
+        <Route path='/products' component={Categories} />
+        <Route path='/products/addProduct' component={FormAdd} />
+        <Route path='/products/addcat' component={FormCat} />
+        <Route path='/order' component={Order} />
+        <Route path='/formuser' component={FormUser} />
       </div>
     </BrowserRouter>
   )
@@ -59,7 +59,7 @@ function App (){
 //       .then(res => this.setState({ categories: res }))
 //       .catch(err => err)
 //   }
-  
+
 
 //   componentWillMount() {
 //     this.callApi();
@@ -168,7 +168,7 @@ function App (){
 
 //   }
 
-  
+
 // }
 
 

@@ -2,23 +2,23 @@ import React from 'react';
 import Card from './Card.jsx';
 import { Link } from 'react-router-dom';
 //import style from './Cards.module.css';
-import {useDispatch, useSelector} from 'react-redux';
-import {getProducts} from '../actions/ProductAction.js';
-import {useEffect} from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getProducts } from '../actions/ProductAction.js';
+import { useEffect } from 'react';
 
 export default function Cards() {
-    
+
     const dispatch = useDispatch();
     const products = useSelector(store => store.products)
-    
-    
+
+
     // const categories = UseSelector(store => store.categories)
 
-        useEffect(() => dispatch(getProducts()),[]);
+    useEffect(() => dispatch(getProducts()), []);
 
     return (
         <div>
-            <div className='cards'>
+            <div className='cards row m-5'>
                 {products.products.map(p => <Card
                     key={p.id}
                     id={p.id}
@@ -37,7 +37,6 @@ export default function Cards() {
                         <button type="button" className="btn btn-secondary btn-sm">Agregar Producto</button>
                     </Link>
                 </div>
-                
             </div>
 
 
