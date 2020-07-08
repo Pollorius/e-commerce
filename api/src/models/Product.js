@@ -1,6 +1,6 @@
 
 const Product = (sequelize, S) => {
-  
+
   P = sequelize.define('product', {
     id: {
       type: S.INTEGER,
@@ -31,7 +31,7 @@ const Product = (sequelize, S) => {
       type: S.STRING,
     }
   });
-  
+
   P.beforeCreate(async (product, options) => {
     const capBrand = product.brand.charAt(0).toUpperCase() + product.brand.slice(1);
     const capName = product.name.charAt(0).toUpperCase() + product.name.slice(1);

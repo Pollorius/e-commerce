@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styles from './Cards.module.css';
 
 export default function SearchBar({ onSearch }) {
-    const [product, setProduct] = useState([])
+    const [product, setProduct] = useState([]);
     return (
         <form onSubmit={(e) => {
             e.preventDefault();

@@ -43,7 +43,6 @@ export default function CatCards(props) {
 
 
                 />)}
-
             </div>
 
             </div>

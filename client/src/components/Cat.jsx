@@ -19,7 +19,7 @@ export default function Categories({ id, name }) {
 
 
 
-    );
+    ); 
 }
 
 

@@ -4,6 +4,9 @@ const db = require('../db.js');
 
 const basename = path.basename(__filename);
 const models = {};
+const { Sequelize, DataTypes } = require("sequelize");
+
+
 
 models.conn = db();
 
@@ -18,10 +21,20 @@ fs.readdirSync(__dirname)
 const {
   Product,
   Category,
+  User,
+  Orders,
+  OrderProduct
+
 } = models;
 
+
+
+
 // Add model relationships here
-Product.belongsToMany(Category, { through: 'product_categories'})
-Category.belongsToMany(Product, { through: 'product_categories'})
+Product.belongsToMany(Category, { through: 'product_categories' })
+Category.belongsToMany(Product, { through: 'product_categories' })
+User.hasMany(Orders)
+Orders.belongsToMany(Product, { through: OrderProduct })
+Product.belongsToMany(Orders, { through: OrderProduct })
 
 module.exports = models;

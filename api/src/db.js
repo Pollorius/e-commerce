@@ -1,4 +1,4 @@
-const Sequelize = require('sequelize');
+const { Sequelize, Op, Model, DataTypes } = require("sequelize");
 
 function db() {
   return new Sequelize('postgres://postgres:12345@localhost:5432/ecommerce7', {
