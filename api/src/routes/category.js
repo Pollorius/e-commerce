@@ -1,7 +1,6 @@
 const server = require('express').Router()
 const { Category } = require('../models/index');
 
-
 server.get('/', function(req, res, next) {
     if(req.query.search) {
         const capQuery = req.query.search.charAt(0).toUpperCase() + req.query.search.slice(1)       
@@ -14,7 +13,6 @@ server.get('/', function(req, res, next) {
         });
         return;
     } 
-
     Category.findAll()
     .then(function(categories) {
         if(!categories) return res.sendStatus(404);
@@ -29,7 +27,6 @@ server.get('/:id', function(req, res, next){
         res.json(category);
     }).catch(next);
 });
-
 server.post('/', function(req, res, next) {
     const { name } = req.body
     if(!name) return res.status(404).send("NOT ENOUGH REQUIREMENTS TO CREATE THIS CATEGORY");

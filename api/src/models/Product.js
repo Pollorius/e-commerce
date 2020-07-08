@@ -29,7 +29,8 @@ const Product = (sequelize, S) => {
     },
     imageUrl: {
       type: S.STRING,
-    }
+    },
+    
   });
 
   P.beforeCreate(async (product, options) => {

@@ -1,34 +1,56 @@
 import React from 'react';
 import style from './Forms.module.css';
-import { useForm } from 'react-hook-form';
-import { useDispatch, useSelector } from 'react-redux';
-import { addProduct } from '../actions/ProductAction.js';
-import { useEffect } from 'react';
-import { getCategories } from '../actions/CategoryActions.js';
+//import { useForm } from 'react-hook-form';
+import { Link } from 'react-router-dom';
+import {useDispatch, useSelector} from 'react-redux';
+import {addProduct} from '../actions/ProductAction.js';
+import {useEffect, useState} from 'react';
+import {getCategories} from '../actions/CategoryActions.js';
 
 
-export default function Form(match) {
-
+export default function Form() {
+    
     const dispatch = useDispatch();
-    const products = useSelector(store => store.products)
     const categories = useSelector(store => store.categories)
-    console.log(products)
+    let cats = categories.categories
+    
+    useEffect(() => dispatch(getCategories()),[]);
+           
+    const [input, setInput] = useState({
+        brand:"",
+        name: "",
+        package: "",
+        price: 0,
+        description: "",
+        imageUrl: "",
+        categoryName:[]
+    })
 
-
-    useEffect(() => dispatch(addProduct()), []);
-    useEffect(() => dispatch(getCategories()), []);
-
-    function submitForm(e) {
-        e.preventDefault();
-        this.props.dispatch({
-            type: "SUBMIT_FORM"
-        });
-    };
+    const handleInputChange = function(e) {
+        setInput({
+            ...input,
+            [e.target.name]: e.target.value,
+                       
+        })
+    }
+    
+    const handleSubmit = function (e) {
+        e.preventDefault()
+        dispatch(() => dispatch(addProduct(input)));
+    }
+    console.log(input)
+    function showCategories (categories){
+        if (categories !== undefined){
+            return categories.map(c => 
+                <option>
+                   {c.name}
+                </option>)
+        }
+    }
 
     return (
-        <div className={style.container}>
-            <form>
-                {/* <form onSubmit={handleSubmit} name="fetch"> */}
+        <div className={style.container}>            
+            <form onChange={handleInputChange} >
                 <div className="form-row">
                     <div className="form-group col-md-6">
                         <label for="inputBrand">Brand</label>
@@ -41,14 +63,14 @@ export default function Form(match) {
                 </div>
                 <div className="form-group">
                     <label for="inputDescription">Description</label>
-                    <input name='description' type="text" className="form-control" id="inputDescription" placeholder="Cerveza rubia de malta..." required />
+                    <input name='description' type="text" className="form-control" id="inputDescription"  required />
                 </div>
                 <div className="form-row">
 
                     <div className="form-group col-md-4">
                         <label for="inputPackage">Package</label>
                         <select name='package' id="inputPackage" className="form-control" required>
-                            <option selected>Choose...</option>
+                            <option value>Choose...</option>
                             <option>473cc</option>
                             <option>710cc</option>
                             <option>745cc</option>
@@ -65,18 +87,18 @@ export default function Form(match) {
                     <label for="exampleFormControlFile1">Upload your product image</label>
                     <input type="file" className="form-control-file" id="exampleFormControlFile1" />
                 </div>
-
+                
                 <div class="form-group">
                     <label for="exampleFormControlSelect2">Select category</label>
-                    <select name='categoryId' multiple className="form-control" id="inputCategoryId">
-                        {categories.categories.map(c => <option>
-                            {c.name}
-                        </option>)}
+                    <select name="categoryName" multiple className="form-control" id="inputCategoryId">
+                        {showCategories(cats)}
                     </select>
 
-
+                    
                 </div>
-                <input onSubmit={submitForm} type="submit" />
+                <Link to='/products'>
+                    <input type="submit" onClick={handleSubmit} />
+                </Link>
             </form>
         </div>
     )

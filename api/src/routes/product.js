@@ -50,7 +50,6 @@ server.get('/findByCat', function(req, res){
 })
 
 
-
 server.get('/:id', function(req, res, next){
     Product.findByPk(req.params.id, {
         include:{
@@ -64,10 +63,9 @@ server.get('/:id', function(req, res, next){
 });
 
 server.post('/', function(req, res, next) {
-    console.log(req.body)
-    const { brand, name, package, price, description, imageUrl } = req.body
-    if(!brand && !name && !package && !price) return res.status(404).send("NOT ENOUGH REQUIREMENTS TO CREATE THIS PRODUCT");    
-    Product.create({
+    const { brand, name, package, price, categoryName, description, imageUrl } = req.body
+    if(!brand && !name && !package && !price) return res.status(400).send("NOT ENOUGH REQUIREMENTS TO CREATE THIS PRODUCT");
+    let product = Product.create({
         brand: brand,
         name: name,
         package: package,
@@ -75,17 +73,33 @@ server.post('/', function(req, res, next) {
         description: description,
         imageUrl: imageUrl
     })
+    let category = Category.findAll({
+        where: {
+            name: categoryName
+        }
+    })
+    Promise.all([product, category])
+    .then(function(values){
+        let prod = values[0];
+        let cat = values[1];
+        prod.setCategories(cat)
+    })    
     .then(function(createdProduct){
         res.json(createdProduct)
-    }).catch(next);
-
+    }).catch(function(reason){
+        res.status(400).json({message:"PRODUCT COULDN'T BE CREATED", data: reason})
+    });
 });
 
 server.put('/:id', function(req, res, next){
-    const { brand, name, package, price, categoryId, description, imageUrl } = req.body
-    if(!brand && !name && !package && !price) return res.status(404).send("NOT ENOUGH REQUIREMENTS TO MODIFY THIS PRODUCT");
+    const { brand, name, package, price, categoryName, description, imageUrl } = req.body
+    if(!brand && !name && !package && !price) return res.status(400).send("NOT ENOUGH REQUIREMENTS TO MODIFY THIS PRODUCT");
     let product = Product.findByPk(req.params.id);
-    let category = Category.findByPk(categoryId);
+    let category = Category.findAll({
+        where: {
+            name: categoryName
+        }
+    });
     Promise.all([product, category])
     .then(function(values){
         let prod = values[0];
@@ -102,17 +116,14 @@ server.put('/:id', function(req, res, next){
             where: {
                 id: req.params.id
             },
-            // returning: true
         })
-        prod.addCategory(cat)
+        prod.setCategories(cat)
         .then(function(category){
             res.status(200).json(category)
         })
     }).catch(function(reason){
         res.status(404).json({message:"PRODUCT COULDN'T BE UPDATED", data: reason})
     });
-
-
 });
 
 server.delete('/:id', function(req, res, next){

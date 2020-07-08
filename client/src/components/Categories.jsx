@@ -42,7 +42,7 @@ export default function Categories() {
             </div>
             <div >
                 <div >
-                    <Link to={`/products/addcat`}>
+                    <Link to={`/products/${categories.categories.id}/addcat`}>
                         <button type="button" className="btn btn-secondary btn-sm">Agregar Categoria</button>
                     </Link>
                 </div>

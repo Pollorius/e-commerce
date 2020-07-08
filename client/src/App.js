@@ -3,7 +3,7 @@ import React from 'react';
 import './App.css';
 import Cards from './components/Cards.jsx';
 //import SearchBar from './components/SearchBar.jsx';
-import Nav from './components/Nav.jsx'
+import Nav from './components/Nav.jsx';
 import Form from './components/Forms.jsx';
 //import { BrowserRouter } from 'react-router-dom';
 import Home from './components/Home.jsx';
@@ -19,6 +19,7 @@ import FormUser from './components/FormUser.jsx'
 import { BrowserRouter } from 'react-router-dom';
 import Order from './components/Order.jsx'
 import { Route } from 'react-router-dom';
+import CatCards from './components/CatCards';
 
 function App() {
 
@@ -27,14 +28,15 @@ function App() {
       <div className='App'>
         <Route path='/' component={Nav} />
         <Route exact path='/' component={Home} />
-        <Route path='/products' component={Cards} />
-        <Route path='/products/:id' component={ProductItem} />
-        <Route path='/products/:id/edit' component={Form} />
-        <Route path='/products' component={Categories} />
-        <Route path='/products/addProduct' component={FormAdd} />
-        <Route path='/products/addcat' component={FormCat} />
-        <Route path='/order' component={Order} />
-        <Route path='/formuser' component={FormUser} />
+        <Route exact path='/products' component={Cards} />
+        <Route exact path='/products/:id' component={ProductItem} />
+        <Route exact path='/products/:id/edit' component={Form} />
+        <Route exact path='/products' component={Categories} />
+        <Route exact path='/products/:id/addProduct' component={FormAdd} />
+        <Route exact path='/products/:id/addcat' component={FormCat} />
+        <Route exact path='/order' component={Order} />
+        <Route exact path='/formuser' component={FormUser} />
+        
       </div>
     </BrowserRouter>
   )
