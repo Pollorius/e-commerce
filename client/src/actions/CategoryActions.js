@@ -19,9 +19,9 @@ export function getCategories() {
     
 }
 
-export function addCategory() {
+export function addCategory(category) {
     return (dispatch, getState) =>{
-      axios.get(`http://localhost:9000/categories`)
+      axios.post(`http://localhost:9000/categories`, category)
         .then(response => {
             dispatch({
                 type: ADD_CATEGORY,

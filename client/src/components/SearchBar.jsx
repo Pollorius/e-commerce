@@ -1,20 +1,29 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import {useDispatch, useSelector } from 'react-redux'
 import styles from './Cards.module.css';
+import { searchProducts } from '../actions/ProductAction';
 
-export default function SearchBar({ onSearch }) {
-    const [product, setProduct] = useState([]);
+export default function SearchBar() {
+    const dispatch = useDispatch();
+    const products = useSelector(store => store.products);
+    
+    useEffect(() => dispatch(searchProducts(input)),[])
+    
+    let catalogue = products.products
+    const [input, setInput] = useState([]);
+
+    const handleSubmit = function (e) {
+        e.preventDefault()
+        dispatch(() => dispatch(searchProducts(input)));
+    }
+    
     return (
-        <form onSubmit={(e) => {
-            e.preventDefault();
-            onSearch(product);
-            setProduct([]);
-        }}>
+        <form onSubmit= {handleSubmit}>
             <input className={styles.input}
                 type="text"
-                placeholder="Buscar..."
-                value={product}
-                onChange={e => setProduct(e.target.value)} />
-            <input className={styles.greenBtn} type="submit" value="Buscar" />
+                placeholder="Choose your poison..."
+                onChange={e => setInput(e.target.value)} />
+            <input className={styles.greenBtn} type="submit" value="Search" />
         </form>
     );
 }

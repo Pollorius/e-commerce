@@ -15,11 +15,23 @@ export default function Categories() {
     const dispatch = useDispatch();
     const categories = useSelector(store => store.categories)
 
+    const cats = categories.categories
 
     useEffect(() => dispatch(getCategories()), []);
     const [dropdownOpen, setOpen] = useState(false);
 
     const toggle = () => setOpen(!dropdownOpen);
+
+    function showCategories (categories){
+        if (categories !== undefined){
+            return categories.map(c => <Cat
+                key={c.id}
+                id={c.id}
+                name={c.name}
+
+            />)
+        }
+    }
 
 
     return (
@@ -30,12 +42,7 @@ export default function Categories() {
                         Categories
                 </DropdownToggle>
                     <DropdownMenu>
-                        <DropdownItem header>{categories.categories.map(c => <Cat
-                            key={c.id}
-                            id={c.id}
-                            name={c.name}
-
-                        />)}</DropdownItem>
+                        <DropdownItem header>{showCategories(cats)}</DropdownItem>
                     </DropdownMenu>
                 </ButtonDropdown>
 

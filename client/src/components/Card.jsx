@@ -5,7 +5,15 @@ import { Link } from 'react-router-dom';
 
 
 export default function Card({ name, brand, description, price, id, packaging, categories }) {
-        
+    
+    function showCategories(categories){
+        if(categories !== undefined) {
+            return categories.map(c =>
+                <li className="list-unstyled">
+                    {c.name}
+                </li>)
+        }
+    }  
 
     return (
         <div className={style.cardcontainer}>
@@ -19,10 +27,7 @@ export default function Card({ name, brand, description, price, id, packaging, c
                         <p className="card-text"> {description} </p>
                         <p className="card-text"> {price} </p>
                         <ul className="card-text">
-                            {categories.map(c =>
-                                <li className="list-unstyled">
-                                    {c.name}
-                                </li>)}
+                           {showCategories(categories)}
                         </ul>
                         <Link to={`/products/${id}`} >
                             <p className="card-text"><small className="text-muted">Ver más...</small></p>

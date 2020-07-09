@@ -4,6 +4,7 @@ export const ADD_PRODUCT = 'ADD_PRODUCT';
 export const MODIFY_PRODUCT = 'MODIFY_PRODUCT';
 export const DELETE_PRODUCT = 'DELETE_PRODUCT';
 export const GET_PRODUCTS = 'GET_PRODUCTS';
+export const SEARCH_PRODUCTS = 'SEARCH_PRODUCTS';
 export const GET_PRODUCT_BY_ID = 'GET_PRODUCT_BY_ID';
 export const GET_PRODUCT_BY_CATEGORY = 'GET_PRODUCT_BY_CATEGORY';
 export const ADD_ITEM_TO_ORDER = 'ADD_ITEM_TO_ORDER';
@@ -29,6 +30,19 @@ export function getProductById(id) {
             .then(response => {
                 dispatch({
                     type: GET_PRODUCT_BY_ID,
+                    payload: response.data
+                })
+            })
+    }
+
+}
+
+export function searchProducts(data) {
+    return (dispatch, getState) => {
+        axios.get(`http://localhost:9000/products?search=${data}`)
+            .then(response => {
+                dispatch({
+                    type: SEARCH_PRODUCTS,
                     payload: response.data
                 })
             })
