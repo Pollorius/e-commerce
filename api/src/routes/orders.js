@@ -7,34 +7,30 @@ const Op = Sequelize.Op;
 
 
 server.get("/:id", (req, res) => {
-    Orders.findByPk(req.params.id)
-        .then(orders => {
-            console.log(orders)
-            res.send(orders);
-            // orders.getProducts({
-            //     include: [
-            //         {
-            //             model: Orders,
-            //             as: "Orders",
-            //             attributes: ["id", "state", "userId"],
-            //         },
-            //     ],
-            //     attributes: ["id"],
-            // })
-            // .then((e) => {
-            //     return res.send(e)
-            // }).catch(() => {
-            //     return res.status(404);
-            // })
-        })
+    Orders.findOne({
+        where: {
+            userId: req.params.id,
+            statusOpen: true
+        },
+        include: {
+          model: Product
+        }
+    }).then(response => {
+        if (response !== null) {
+            return res.send(response.products);
+        } else {
+            return res.send([])
+        }
+    })
+
 })
 
 
 
 server.post("/create", (req, res) => {
-    const { state, userId } = req.body;
+    const { statusOpen, userId } = req.body;
     Orders.create({
-        state,
+        statusOpen,
         userId
     })
         .then(() => {
@@ -46,15 +42,18 @@ server.post("/create", (req, res) => {
 });
 
 server.post("/add", (req, res) => {
-    const { ordersId, productId } = req.body;
-    var producto = Product.findByPk(productId)
-    var carrito = Orders.findByPk(ordersId)
-    Promise.all([
-        producto, carrito
-    ])
+    const { userId, productId } = req.body;
+    var product = Product.findByPk(productId)
+    var cart = Orders.findOne({
+        where: {
+            userId,
+            statusOpen: true,
+        }
+    })
+    Promise.all([product, cart])
         .then((values) => {
-            var [product, carry] = values
-            carry.addProducto(product)
+            var [prod, car] = values
+            car.addProduct(prod)
         })
         .then(() => {
             res.sendStatus(200);

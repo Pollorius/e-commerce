@@ -9,8 +9,8 @@ const Orders = (sequelize, S) => {
       autoIncrement: true,
       primaryKey: true
     },
-    state: {
-      type: S.STRING,
+    statusOpen: {
+      type: S.BOOLEAN,
       allowNull: false
     },
     userId: {

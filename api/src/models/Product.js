@@ -30,6 +30,10 @@ const Product = (sequelize, S) => {
     imageUrl: {
       type: S.STRING,
     },
+    stock: {
+      type: S.INTEGER,
+      allowNull: false
+    }
     
   });
 

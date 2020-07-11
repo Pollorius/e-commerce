@@ -7,47 +7,49 @@ const Op = Sequelize.Op;
 
 server.get('/', function(req, res, next) {
     if(req.query.search) {
-        const capQuery = req.query.search.charAt(0).toUpperCase() + req.query.search.slice(1)       
+        const query = decodeURI(req.query.search)      
         Product.findAll({
             where: {
-                [Op.or]: [{brand: capQuery}, {name: capQuery}]
+            [Op.or]: {
+                brand: {
+                    [Op.iLike]: `%${query}%`
+                },
+                name: {
+                    [Op.iLike]: `%${query}%`
+                }
+              }
             },
             include:{
                 model: Category,
                 attributes: ["name"],
             }
         }).then(function(products){
+            console.log(`${products[0].dataValues.brand}${products[0].dataValues.name}`)
             res.json(products);
         });
-        return;
-    }
-    Product.findAll({
-        include:{
-            model: Category,
-            attributes: ["name"],
-        }
+       
+    } else {
+        Product.findAll({
+            where: {
+                stock: {
+                    [Op.ne]: 0
+                }
+            },
+            include:{
+                model: Category,
+                attributes: ["name"],
+            }
         
-    })
-    .then(function(products) {
-        if(!products) return res.sendStatus(404);
-        res.json(products);
-    }).catch(function(reason){
-        res.status(404).json({message:"PRODUCT COULDN'T BE FOUND", data: reason})
-    });
+        })
+        .then(function(products) {
+            
+            if(!products) return res.sendStatus(404);
+            res.json(products);
+        }).catch(function(reason){
+            res.status(404).json({message:"PRODUCT COULDN'T BE FOUND", data: reason})
+        });
+    }
 });
-
-server.get('/findByCat', function(req, res){
-    const { categoryId } = req.body
-    Category.findByPk(categoryId)
-    .then(function(category) {
-      category.getProducts()
-      .then(function(product){
-        res.json(product);
-      });
-    }).catch(function(reason){
-        res.status(404).json({message:"THERE IS NOT PRODUCTS IN THIS CATEGORY", data: reason})
-    })
-})
 
 
 server.get('/:id', function(req, res, next){
@@ -63,15 +65,16 @@ server.get('/:id', function(req, res, next){
 });
 
 server.post('/', function(req, res, next) {
-    const { brand, name, package, price, categoryName, description, imageUrl } = req.body
-    if(!brand && !name && !package && !price) return res.status(400).send("NOT ENOUGH REQUIREMENTS TO CREATE THIS PRODUCT");
+    const { brand, name, package, price, stock, categoryName, description, imageUrl } = req.body
+    if(!brand && !name && !package && !price && !stock) return res.status(400).send("NOT ENOUGH REQUIREMENTS TO CREATE THIS PRODUCT");
     let product = Product.create({
         brand: brand,
         name: name,
         package: package,
         price: price,
         description: description,
-        imageUrl: imageUrl
+        imageUrl: imageUrl,
+        stock: stock
     })
     let category = Category.findAll({
         where: {
@@ -92,8 +95,8 @@ server.post('/', function(req, res, next) {
 });
 
 server.put('/:id', function(req, res, next){
-    const { brand, name, package, price, categoryName, description, imageUrl } = req.body
-    if(!brand && !name && !package && !price) return res.status(400).send("NOT ENOUGH REQUIREMENTS TO MODIFY THIS PRODUCT");
+    const { brand, name, package, price, stock, categoryName, description, imageUrl } = req.body
+    if(!brand && !name && !package && !price && !stock) return res.status(400).send("NOT ENOUGH REQUIREMENTS TO MODIFY THIS PRODUCT");
     let product = Product.findByPk(req.params.id);
     let category = Category.findAll({
         where: {
@@ -110,7 +113,8 @@ server.put('/:id', function(req, res, next){
             package: package,
             price: price,
             description: description,
-            imageUrl: imageUrl
+            imageUrl: imageUrl,
+            stock: stock
         }, 
         {
             where: {

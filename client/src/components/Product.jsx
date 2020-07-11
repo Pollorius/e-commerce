@@ -33,6 +33,8 @@ export default function ProductItem(match) {
                     <div>
                         <h5 className="card-title"> {products.products.name} </h5>
                         <p className="card-text"> {products.products.brand} </p>
+                        <p className="card-text"> ${products.products.price} </p>
+                        <p className="card-text"> {products.products.package} </p>
                         <p className="card-text">
                             <small className="text-muted">
                                 {products.products.description}

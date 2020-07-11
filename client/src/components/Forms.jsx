@@ -27,6 +27,7 @@ export default function Form(match) {
         price: 0,
         description: "",
         imageUrl: "",
+        stock: 0,
         categoryName:[]
     })
     console.log(input)
@@ -81,6 +82,10 @@ export default function Form(match) {
                 <div className="form-group col-md-2">
                     <label htmlFor="inputPrice">Price</label>
                     <input name='price' type="text" className="form-control" id="inputPrice" defaultValue={prods.price} required />
+                </div>
+                <div className="form-group col-md-2">
+                    <label htmlFor="inputStock">Stock</label>
+                    <input name='stock' type="text" className="form-control" id="inputStock" defaultValue={prods.stock} required />
                 </div>
                 
                 <div className="form-group">

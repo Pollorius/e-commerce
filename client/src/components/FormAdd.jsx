@@ -23,6 +23,7 @@ export default function Form() {
         price: 0,
         description: "",
         imageUrl: "",
+        stock: 0,
         categoryName:[]
     })
 
@@ -81,6 +82,10 @@ export default function Form() {
                     <div className="form-group col-md-2">
                         <label for="inputPrice">Price</label>
                         <input name='price' type="text" className="form-control" id="inputPrice" required />
+                    </div>
+                    <div className="form-group col-md-2">
+                        <label for="inputStock">Stock</label>
+                        <input name='stock' type="text" className="form-control" id="inputStock" required />
                     </div>
                 </div>
                 <div className="form-group">

@@ -2,17 +2,6 @@ const server = require('express').Router()
 const { Category } = require('../models/index');
 
 server.get('/', function(req, res, next) {
-    if(req.query.search) {
-        const capQuery = req.query.search.charAt(0).toUpperCase() + req.query.search.slice(1)       
-        Category.findAll({
-            where: {
-                [Op.or]: [{name: capQuery}]
-            }
-        }).then(function(categories){
-            res.json(categories);
-        });
-        return;
-    } 
     Category.findAll()
     .then(function(categories) {
         if(!categories) return res.sendStatus(404);

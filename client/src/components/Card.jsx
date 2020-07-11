@@ -25,7 +25,7 @@ export default function Card({ name, brand, description, price, id, packaging, c
                         <p className="card-text"> {brand}</p>
                         <p className="card-text"> {packaging} </p>
                         <p className="card-text"> {description} </p>
-                        <p className="card-text"> {price} </p>
+                        <p className="card-text"> ${price} </p>
                         <ul className="card-text">
                            {showCategories(categories)}
                         </ul>
