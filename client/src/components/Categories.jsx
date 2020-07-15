@@ -11,7 +11,7 @@ import { useState } from 'react';
 import { ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 
 export default function Categories() {
-    console.log(store.getState())
+    
     const dispatch = useDispatch();
     const categories = useSelector(store => store.categories)
 

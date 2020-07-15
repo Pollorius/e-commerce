@@ -30,11 +30,12 @@ function App() {
         <Route exact path='/' component={Home} />
         <Route exact path='/products' component={Cards} />
         <Route exact path='/products/:id' component={ProductItem} />
+        <Route exact path='/products/:id/findByCat' component={CatCards} />
         <Route exact path='/products/:id/edit' component={Form} />
         <Route exact path='/products' component={Categories} />
         <Route exact path='/products/:id/addProduct' component={FormAdd} />
         <Route exact path='/products/:id/addcat' component={FormCat} />
-        <Route exact path='/order' component={Order} />
+        <Route exact path='/orders/:id' component={Order} />
         <Route exact path='/formuser' component={FormUser} />
         
       </div>

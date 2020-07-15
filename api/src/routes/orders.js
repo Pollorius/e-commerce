@@ -17,6 +17,7 @@ server.get("/:id", (req, res) => {
         }
     }).then(response => {
         if (response !== null) {
+            console.log(response)
             return res.send(response.products);
         } else {
             return res.send([])
@@ -41,8 +42,10 @@ server.post("/create", (req, res) => {
         });
 });
 
-server.post("/add", (req, res) => {
-    const { userId, productId } = req.body;
+server.post("/:id/add", (req, res) => {
+    const { productId } = req.body;
+    console.log(productId)
+    const userId = req.params.id
     var product = Product.findByPk(productId)
     var cart = Orders.findOne({
         where: {

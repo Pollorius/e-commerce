@@ -16,7 +16,7 @@ export default function Cards() {
     
     function showProducts(products){
         console.log(products)
-        if(products !== undefined) {
+        if(products.length !== 0) {
             return products.map(p => <Card
                 key={p.id}
                 id={p.id}

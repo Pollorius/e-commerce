@@ -17,7 +17,7 @@ export default function ProductItem(match) {
     let categories = products.products.categories;
     
     function showCategories(categories){
-        if(categories !== undefined) {
+        if(Array.isArray(categories) && categories.length !== 0) {
             return categories.map(c =>
                 <li>
                     {c.name}

@@ -1,4 +1,4 @@
-import {GET_PRODUCTS, GET_PRODUCT_BY_ID, DELETE_PRODUCT, ADD_PRODUCT, MODIFY_PRODUCT, SEARCH_PRODUCTS } from '../actions/ProductAction.js';
+import {GET_PRODUCTS, GET_PRODUCT_BY_ID, DELETE_PRODUCT, ADD_PRODUCT, MODIFY_PRODUCT, SEARCH_PRODUCTS, GET_PRODUCT_BY_CATEGORY } from '../actions/ProductAction.js';
 
 const inicialState = {
     products:[],
@@ -20,6 +20,13 @@ export default function productReducer ( state= inicialState, action){
         }
     }
     if (action.type === GET_PRODUCT_BY_ID ){
+        return {
+            ...state,
+            products: action.payload
+
+        }
+    }
+    if (action.type === GET_PRODUCT_BY_CATEGORY ){
         return {
             ...state,
             products: action.payload

@@ -7,9 +7,7 @@ export const GET_PRODUCTS = 'GET_PRODUCTS';
 export const SEARCH_PRODUCTS = 'SEARCH_PRODUCTS';
 export const GET_PRODUCT_BY_ID = 'GET_PRODUCT_BY_ID';
 export const GET_PRODUCT_BY_CATEGORY = 'GET_PRODUCT_BY_CATEGORY';
-export const ADD_ITEM_TO_ORDER = 'ADD_ITEM_TO_ORDER';
-export const DELETE_ITEM_FROM_ORDER = 'DELETE_ITEM_FROM_ORDER';
-// export const REMOVE_ITEM_FROM_ORDER = 'REMOVE_ITEM_FROM_ORDER';
+
 
 export function getProducts() {
     return (dispatch, getState) => {
@@ -76,9 +74,9 @@ export function addProduct(product) {
 
 }
 
-export function getProductByCategory() {
+export function getProductByCategory(id) {
     return (dispatch, getState) => {
-        axios.get(`http://localhost:9000/products/findByCat`)
+        axios.get(`http://localhost:9000/products/${id}/findByCat`)
             .then(response => {
                 dispatch({
                     type: GET_PRODUCT_BY_CATEGORY,
@@ -89,26 +87,4 @@ export function getProductByCategory() {
 
 }
 
-export function addItemToOrder (id){
-    return (dispatch, getState) => {
-      axios.get('http://localhost:9000/products/' + id)
-         .then(response => {
-              dispatch({
-              type: ADD_ITEM_TO_ORDER,
-                payload: response.data
-            });
-        })
-    };
-}
 
-export function deleteItemFromOrder (id){
-    return (dispatch) => {
-      axios.delete('http://localhost:9000/products/' + id)
-         .then(response => {
-              dispatch({
-              type: DELETE_ITEM_FROM_ORDER,
-                payload: response.data
-            })
-        })
-    }
-}

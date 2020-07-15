@@ -2,6 +2,8 @@ import React from 'react';
 import style from './Card.module.css';
 import Imagen from './beerProduct.jpg';
 import { Link } from 'react-router-dom';
+import AddtoCartButton from './AddToCartButton';
+
 
 
 export default function Card({ name, brand, description, price, id, packaging, categories }) {
@@ -20,7 +22,7 @@ export default function Card({ name, brand, description, price, id, packaging, c
             <div className="card col m-4">
                 <div className={style.cardwidth} style={{ width: 18 + 'em' }} >
                     <img src={Imagen} className="card-img-top" alt={Imagen} height="200px" width="500px" />
-                    <div class="card-body">
+                    <div className="card-body">
                         <h5 className="card-title"> {name}</h5>
                         <p className="card-text"> {brand}</p>
                         <p className="card-text"> {packaging} </p>
@@ -32,11 +34,7 @@ export default function Card({ name, brand, description, price, id, packaging, c
                         <Link to={`/products/${id}`} >
                             <p className="card-text"><small className="text-muted">Ver más...</small></p>
                         </Link>
-                        <Link to={`/order/`} >
-                            <button type="button" className="btn btn-secondary btn-sm">
-                                Add to cart
-                            </button>
-                        </Link>
+                        <AddtoCartButton id={id}/>                        
                     </div>
                 </div>
             </div>

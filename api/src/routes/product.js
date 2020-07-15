@@ -51,7 +51,6 @@ server.get('/', function(req, res, next) {
     }
 });
 
-
 server.get('/:id', function(req, res, next){
     Product.findByPk(req.params.id, {
         include:{
@@ -63,6 +62,20 @@ server.get('/:id', function(req, res, next){
         res.json(product);
     }).catch(next);
 });
+
+server.get('/:id/findByCat', function(req, res){
+    const categoryId = req.params.id  
+    Category.findByPk(categoryId)
+    .then(function(category) {
+      category.getProducts()
+      .then(function(product){
+        res.json(product);
+      });
+    }).catch(function(reason){
+        res.status(404).json({message:"THERE ARE NOT PRODUCTS IN THIS CATEGORY", data: reason})
+    })
+})
+
 
 server.post('/', function(req, res, next) {
     const { brand, name, package, price, stock, categoryName, description, imageUrl } = req.body

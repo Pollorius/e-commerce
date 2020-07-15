@@ -1,48 +1,37 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import {useDispatch, useSelector} from 'react-redux';
 // import style from './Forms.module.css';
 //import { useForm } from 'react-hook-form';
-import Card from './Card.jsx'
+import Card from './Card.jsx';
+import { getProductByCategory } from '../actions/ProductAction.js';
 
-export default function CatCards(props) {
-    // const { register } = useForm();
-    // const onSubmit = data => console.log(data);
-    console.log(props)
-    
-    const handleSubmit = function (e) {
-        e.preventDefault();
-        var url = 'http://localhost:9000/products/findByCat/';
-        var data = {
-            categoryId: e.target.categoryId.value
 
-        };
+export default function CatCards(match) {
+    const dispatch = useDispatch();
+    const products = useSelector(store => store.products);
         
-
-        fetch(url, {
-            method: 'GET', //POST
-            body: JSON.stringify(data),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        }).then(res => console.log(res))
-        .catch(err => console.log(err))
+    useEffect(() => dispatch(getProductByCategory(match.match.params.id)),[])
+    
+    let catalogue = products.products
+    
+    function showProducts(products){
+        if(products !== undefined) {
+            return products.map(p => <Card
+                key={p.id}
+                id={p.id}
+                name={p.name}
+                brand={p.brand}
+                package={p.packaging}
+                description={p.description}
+                price={p.price}
+                categories={p.categories}
+            />)
+        }
     }
-
     return (
-        <div className='cards'>
+        <div className='cards row m-5'>
             <div className='cards'>
-                {props.product.map(p => <Card 
-                    onSubmit={handleSubmit} 
-                    key={p.id}
-                    id={p.id}
-                    name={p.name}
-                    brand={p.brand}
-                    package={p.packaging}
-                    description={p.description}
-                    price={p.price}
-                    categories={p.categories}
-
-
-                />)}
+                {showProducts(catalogue)}
             </div>
 
             </div>
