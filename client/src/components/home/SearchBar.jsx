@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react'
 import {useDispatch, useSelector } from 'react-redux'
-import styles from './Cards.module.css';
-import { searchProducts } from '../actions/ProductAction';
+import styles from '../products/Cards.module.css'
+import { searchProducts } from '../../actions/ProductAction'
 
 export default function SearchBar() {
     const dispatch = useDispatch();

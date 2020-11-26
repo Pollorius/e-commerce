@@ -3,9 +3,9 @@ import style from './Forms.module.css';
 // import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux';
-import {modifyProduct, getProductById} from '../actions/ProductAction.js';
+import {modifyProduct, getProductById} from '../../actions/ProductAction.js';
 import {useEffect, useState} from 'react';
-import { getCategories } from '../actions/CategoryActions';
+import { getCategories } from '../../actions/CategoryActions';
 
 export default function Form(match) {
     const dispatch = useDispatch();

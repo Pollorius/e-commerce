@@ -1,8 +1,8 @@
 import React from 'react';
-import Image from './beerProduct.jpg';
+import Image from '../../img/beerProduct.jpg';
 import style from './Product.module.css';
 import { Link } from 'react-router-dom';
-import { getProductById } from '../actions/ProductAction';
+import { getProductById } from '../../actions/ProductAction';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 

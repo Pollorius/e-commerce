@@ -1,10 +1,10 @@
-import React from 'react';
+import React from 'react'
 import Card from './Card.jsx';
 import { Link } from 'react-router-dom';
 import style from './Cards.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { getProducts } from '../actions/ProductAction.js';
+import { getProducts } from '../../actions/ProductAction.js';
 
 export default function Cards() {
     const dispatch = useDispatch();

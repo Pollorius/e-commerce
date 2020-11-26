@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom';
 //import style from './Cards.module.css'
 import Cat from './Cat.jsx';
 import { useDispatch, useSelector } from 'react-redux';
-import { getCategories } from '../actions/CategoryActions.js';
+import { getCategories } from '../../actions/CategoryActions.js';
 import { useEffect } from 'react';
-import store from '../store.js';
+import store from '../../store.js';
 import { useState } from 'react';
 import { ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 

@@ -2,7 +2,7 @@ import React from 'react';
 import style from './Forms.module.css';
 //import { useForm } from 'react-hook-form';
 import {useDispatch, useSelector} from 'react-redux';
-import {addCategory} from '../actions/CategoryActions.js';
+import {addCategory} from '../../actions/CategoryActions.js';
 import {useState} from 'react';
 
 export default function FormCat(match) {

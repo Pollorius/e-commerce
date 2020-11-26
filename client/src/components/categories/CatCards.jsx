@@ -2,8 +2,8 @@ import React, { useEffect } from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 // import style from './Forms.module.css';
 //import { useForm } from 'react-hook-form';
-import Card from './Card.jsx';
-import { getProductByCategory } from '../actions/ProductAction.js';
+import Card from '../products/Card.jsx';
+import { getProductByCategory } from '../../actions/ProductAction.js';
 
 
 export default function CatCards(match) {

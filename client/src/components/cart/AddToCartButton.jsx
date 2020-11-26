@@ -1,5 +1,5 @@
 import React from 'react';
-import {addItemToOrder} from '../actions/OrderAction.js';
+import {addItemToOrder} from '../../actions/OrderAction.js';
 import { useDispatch } from 'react-redux';
 
 export default function AddtoCartButton (productId) {  

@@ -1,9 +1,9 @@
 import React from 'react';
-import Logo from './beerIcon.png'
+import Logo from '../../img/beerIcon.png'
 import SearchBar from './SearchBar.jsx';
 import './Nav.css';
 import { Link } from 'react-router-dom';
-import carrito from './logoshop.png'
+import carrito from '../../img/logoshop.png'
 import style from './Nav.css';
 
 function Nav() {

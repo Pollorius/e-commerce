@@ -1,7 +1,7 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
-import { addUser } from '../actions/UserActions.js';
+import { addUser } from '../../actions/UserActions.js';
 import { useEffect } from 'react';
 import { useState } from 'react';
 

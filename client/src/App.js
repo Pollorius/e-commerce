@@ -1,25 +1,25 @@
 import React from 'react';
 //import logo from './logo.svg';
 import './App.css';
-import Cards from './components/Cards.jsx';
+import Cards from './components/products/Cards'
 //import SearchBar from './components/SearchBar.jsx';
-import Nav from './components/Nav.jsx';
-import Form from './components/Forms.jsx';
+import Nav from './components/home/Nav'
+import Form from './components/forms/Forms'
 //import { BrowserRouter } from 'react-router-dom';
-import Home from './components/Home.jsx';
-import ProductItem from './components/Product.jsx';
-import FormAdd from './components/FormAdd.jsx';
-import Categories from './components/Categories.jsx';
-import FormCat from './components/FormCat.jsx';
-import FormUser from './components/FormUser.jsx'
+import Home from './components/home/Home'
+import ProductItem from './components/products/Product.jsx'
+import FormAdd from './components/forms/FormAdd'
+import Categories from './components/categories/Categories'
+import FormCat from './components/forms/FormCat'
+import FormUser from './components/forms/FormUser'
 // import CatCards from './components/CatCards';
 // import {connect} from 'react-redux';
 // import {getProducts} from './actions/ProductAction.js';
 
 import { BrowserRouter } from 'react-router-dom';
-import Order from './components/Order.jsx'
+import Order from './components/cart/Order'
 import { Route } from 'react-router-dom';
-import CatCards from './components/CatCards';
+import CatCards from './components/categories/CatCards'
 
 function App() {
 

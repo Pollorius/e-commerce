@@ -1,5 +1,5 @@
 import React from 'react';
-import Imagen from './beerImage.jpg';
+import Imagen from '../../img/beerImage.jpg';
 import { Link } from 'react-router-dom';
 
 export default function Home() {

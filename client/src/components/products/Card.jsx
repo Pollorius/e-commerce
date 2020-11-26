@@ -1,8 +1,8 @@
 import React from 'react';
 import style from './Card.module.css';
-import Imagen from './beerProduct.jpg';
+import Imagen from '../../img/beerProduct.jpg';
 import { Link } from 'react-router-dom';
-import AddtoCartButton from './AddToCartButton';
+import AddtoCartButton from '../cart/AddToCartButton';
 
 
 
