@@ -1,29 +1,32 @@
 import React, { useState, useEffect } from 'react'
-import {useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import styles from '../products/Cards.module.css'
 import { searchProducts } from '../../actions/ProductAction'
 
-export default function SearchBar() {
-    const dispatch = useDispatch();
-    const products = useSelector(store => store.products);
-    
-    useEffect(() => dispatch(searchProducts(input)),[])
-    
-    let catalogue = products.products
-    const [input, setInput] = useState([]);
+export default function SearchBar () {
+  const [input, setInput] = useState([])
+  const dispatch = useDispatch()
 
-    const handleSubmit = function (e) {
-        e.preventDefault()
-        dispatch(() => dispatch(searchProducts(input)));
-    }
-    
-    return (
-        <form onSubmit= {handleSubmit}>
-            <input className={styles.input}
-                type="text"
-                placeholder="Choose your poison..."
-                onChange={e => setInput(e.target.value)} />
-            <input className={styles.greenBtn} type="submit" value="Search" />
-        </form>
-    );
+  useEffect(() => dispatch(searchProducts(input)), [dispatch, input])
+
+  /* no sabemos para que esta esto aca
+  const products = useSelector(store => store.products)
+  const catalogue = products.products */
+
+  const handleSubmit = function (e) {
+    e.preventDefault()
+    dispatch(() => dispatch(searchProducts(input)))
+  }
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <input
+        className={styles.input}
+        type='text'
+        placeholder='Choose your poison...'
+        onChange={e => setInput(e.target.value)}
+      />
+      <input className={styles.greenBtn} type='submit' value='Search' />
+    </form>
+  )
 }

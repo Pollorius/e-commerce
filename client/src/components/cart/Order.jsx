@@ -1,7 +1,5 @@
 import React from 'react';
-import Image from '../../img/beerProduct.jpg';
-import style from '../products/Product.module.css';
-import { Link } from 'react-router-dom';
+//import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { getOrders } from '../../actions/OrderAction';
